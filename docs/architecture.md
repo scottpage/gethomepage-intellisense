@@ -11,6 +11,10 @@ The original extension provides GetHomepage YAML schemas and snippets in Portugu
 - Added Oxlint, Oxfmt, VS Code workspace configuration, debug launch, and compilation task.
 - Added locale tests, an offline locale scaffolder, and `src/locales.json` as the locale registry.
 
+## Translation implementation update
+
+The initial `translate-locales.cjs` script relied on an unofficial Google Translate endpoint and encountered HTTP 429 rate limits. No replacement translation API was introduced. English schema descriptions were instead translated directly with AI assistance, preserving the original schema validation structure; the full set of seven English schema descriptions is now translated. English snippets and hands-on language testing remain pending.
+
 ## Decision: community-owned language contributions
 
 We did not prepopulate every possible language. Bulk machine translation hit HTTP 429 rate limits, so new locales are intentionally added by individual contributors using the offline scaffolder. This spreads any external translation-service load across the community and gives each language a chance for human review. See [localization.md](localization.md).

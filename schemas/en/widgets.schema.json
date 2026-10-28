@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gethomepage.dev/schemas/widgets.schema.json",
   "title": "GetHomepage Info Widgets",
-  "description": "Configuration for Widgets. Documentation: https://gethomepage.dev/configs/info-widgets/",
+  "description": "Schema for GetHomepage widgets.yaml (global information widgets). Documentation: https://gethomepage.dev/configs/info-widgets/",
   "type": "array",
   "items": {
     "oneOf": [
@@ -47,7 +47,7 @@
   "definitions": {
     "textSize": {
       "type": "string",
-      "description": "Configuration for Text Size.",
+      "description": "Text size.",
       "enum": [
         "4xl",
         "3xl",
@@ -67,14 +67,14 @@
       "properties": {
         "greeting": {
           "type": "object",
-          "description": "Configuration for Greeting.",
+          "description": "Greeting widget. Displays a welcome message.",
           "properties": {
             "text_size": {
               "$ref": "#/definitions/textSize"
             },
             "text": {
               "type": "string",
-              "description": "Configuration for Text."
+              "description": "Greeting text to display."
             }
           },
           "additionalProperties": false
@@ -90,22 +90,22 @@
       "properties": {
         "datetime": {
           "type": "object",
-          "description": "Configuration for Datetime.",
+          "description": "Date/time widget. Displays the current date and time.",
           "properties": {
             "text_size": {
               "$ref": "#/definitions/textSize"
             },
             "locale": {
               "type": "string",
-              "description": "Configuration for Locale."
+              "description": "Locale used for formatting (overrides settings.yaml), e.g. pt-BR."
             },
             "format": {
               "type": "object",
-              "description": "Configuration for Format.",
+              "description": "Intl.DateTimeFormat options.",
               "properties": {
                 "dateStyle": {
                   "type": "string",
-                  "description": "Configuration for Date Style.",
+                  "description": "Date display style.",
                   "enum": [
                     "full",
                     "long",
@@ -115,7 +115,7 @@
                 },
                 "timeStyle": {
                   "type": "string",
-                  "description": "Configuration for Time Style.",
+                  "description": "Time display style.",
                   "enum": [
                     "full",
                     "long",
@@ -125,7 +125,7 @@
                 },
                 "hour12": {
                   "type": "boolean",
-                  "description": "Configuration for Hour12."
+                  "description": "Use 12-hour time format."
                 },
                 "hour": {
                   "type": "string",
@@ -208,10 +208,10 @@
       "properties": {
         "search": {
           "type": "object",
-          "description": "Configuration for Search.",
+          "description": "Search widget. Adds a search bar to the header.",
           "properties": {
             "provider": {
-              "description": "Configuration for Provider.",
+              "description": "Search provider; accepts a string or an array of providers.",
               "oneOf": [
                 {
                   "type": "string",
@@ -242,17 +242,17 @@
             },
             "focus": {
               "type": "boolean",
-              "description": "Configuration for Focus.",
+              "description": "Automatically focus the search field on page load.",
               "default": true
             },
             "showSearchSuggestions": {
               "type": "boolean",
-              "description": "Configuration for Show Search Suggestions.",
+              "description": "Show search suggestions.",
               "default": false
             },
             "target": {
               "type": "string",
-              "description": "Configuration for Target.",
+              "description": "Where to open search results.",
               "enum": [
                 "_self",
                 "_blank",
@@ -261,11 +261,11 @@
             },
             "url": {
               "type": "string",
-              "description": "Configuration for Url."
+              "description": "Custom search provider URL; use {searchTerm} as the placeholder."
             },
             "suggestionUrl": {
               "type": "string",
-              "description": "Configuration for Suggestion Url."
+              "description": "URL for a custom suggestions endpoint."
             }
           },
           "additionalProperties": false
@@ -281,22 +281,22 @@
       "properties": {
         "resources": {
           "type": "object",
-          "description": "Configuration for Resources.",
+          "description": "System resource widget (CPU, memory, disk).",
           "properties": {
             "label": {
               "type": "string",
-              "description": "Configuration for Label."
+              "description": "System display label."
             },
             "cpu": {
               "type": "boolean",
-              "description": "Configuration for Cpu."
+              "description": "Show CPU usage."
             },
             "memory": {
               "type": "boolean",
-              "description": "Configuration for Memory."
+              "description": "Show memory usage."
             },
             "disk": {
-              "description": "Configuration for Disk.",
+              "description": "Disk mount point or array of mount points.",
               "oneOf": [
                 {
                   "type": "string"
@@ -311,23 +311,23 @@
             },
             "cputemp": {
               "type": "boolean",
-              "description": "Configuration for Cputemp."
+              "description": "Show CPU temperature."
             },
             "tempmin": {
               "type": "number",
-              "description": "Configuration for Tempmin."
+              "description": "Minimum temperature for the scale."
             },
             "tempmax": {
               "type": "number",
-              "description": "Configuration for Tempmax."
+              "description": "Maximum temperature for the scale."
             },
             "uptime": {
               "type": "boolean",
-              "description": "Configuration for Uptime."
+              "description": "Show uptime."
             },
             "units": {
               "type": "string",
-              "description": "Configuration for Units.",
+              "description": "Temperature unit.",
               "enum": [
                 "metric",
                 "imperial"
@@ -335,7 +335,7 @@
             },
             "diskUnits": {
               "type": "string",
-              "description": "Configuration for Disk Units.",
+              "description": "Disk size unit.",
               "enum": [
                 "bytes",
                 "bbytes"
@@ -343,11 +343,11 @@
             },
             "refresh": {
               "type": "integer",
-              "description": "Configuration for Refresh.",
+              "description": "Refresh interval in milliseconds.",
               "default": 3000
             },
             "network": {
-              "description": "Configuration for Network.",
+              "description": "Show network usage; true for the default interface or specify an interface name.",
               "oneOf": [
                 {
                   "type": "boolean"
@@ -359,7 +359,7 @@
             },
             "expanded": {
               "type": "boolean",
-              "description": "Configuration for Expanded.",
+              "description": "Show expanded view.",
               "default": false
             }
           },
@@ -376,27 +376,27 @@
       "properties": {
         "openweathermap": {
           "type": "object",
-          "description": "Configuration for Openweathermap.",
+          "description": "Weather widget using the OpenWeatherMap API.",
           "properties": {
             "label": {
               "type": "string",
-              "description": "Configuration for Label."
+              "description": "Displayed location name."
             },
             "latitude": {
               "type": "number",
-              "description": "Configuration for Latitude.",
+              "description": "Location latitude.",
               "minimum": -90,
               "maximum": 90
             },
             "longitude": {
               "type": "number",
-              "description": "Configuration for Longitude.",
+              "description": "Location longitude.",
               "minimum": -180,
               "maximum": 180
             },
             "units": {
               "type": "string",
-              "description": "Configuration for Units.",
+              "description": "Unit system.",
               "enum": [
                 "metric",
                 "imperial"
@@ -404,25 +404,25 @@
             },
             "provider": {
               "type": "string",
-              "description": "Configuration for Provider.",
+              "description": "Provider name (when using providers in settings.yaml).",
               "const": "openweathermap"
             },
             "apiKey": {
               "type": "string",
-              "description": "Configuration for Api Key."
+              "description": "OpenWeatherMap API key (or use a configured provider)."
             },
             "cache": {
               "type": "integer",
-              "description": "Configuration for Cache.",
+              "description": "Cache duration in minutes.",
               "default": 5
             },
             "format": {
               "type": "object",
-              "description": "Configuration for Format.",
+              "description": "Intl.NumberFormat options.",
               "properties": {
                 "maximumFractionDigits": {
                   "type": "integer",
-                  "description": "Configuration for Maximum Fraction Digits."
+                  "description": "Maximum number of decimal places."
                 }
               },
               "additionalProperties": true
@@ -441,31 +441,31 @@
       "properties": {
         "openmeteo": {
           "type": "object",
-          "description": "Configuration for Openmeteo.",
+          "description": "Weather widget using Open-Meteo (free; no API key required).",
           "properties": {
             "label": {
               "type": "string",
-              "description": "Configuration for Label."
+              "description": "Displayed location name."
             },
             "latitude": {
               "type": "number",
-              "description": "Configuration for Latitude.",
+              "description": "Latitude.",
               "minimum": -90,
               "maximum": 90
             },
             "longitude": {
               "type": "number",
-              "description": "Configuration for Longitude.",
+              "description": "Longitude.",
               "minimum": -180,
               "maximum": 180
             },
             "timezone": {
               "type": "string",
-              "description": "Configuration for Timezone."
+              "description": "IANA timezone, e.g. America/Sao_Paulo."
             },
             "units": {
               "type": "string",
-              "description": "Configuration for Units.",
+              "description": "Unit system.",
               "enum": [
                 "metric",
                 "imperial"
@@ -473,16 +473,16 @@
             },
             "cache": {
               "type": "integer",
-              "description": "Configuration for Cache.",
+              "description": "Cache duration in minutes.",
               "default": 5
             },
             "format": {
               "type": "object",
-              "description": "Configuration for Format.",
+              "description": "Intl.NumberFormat options.",
               "properties": {
                 "maximumFractionDigits": {
                   "type": "integer",
-                  "description": "Configuration for Maximum Fraction Digits."
+                  "description": "Maximum number of decimal places."
                 }
               },
               "additionalProperties": true
@@ -501,26 +501,26 @@
       "properties": {
         "glances": {
           "type": "object",
-          "description": "Configuration for Glances.",
+          "description": "Glances widget for remote system monitoring.",
           "required": [
             "url"
           ],
           "properties": {
             "url": {
               "type": "string",
-              "description": "Configuration for Url."
+              "description": "Glances server URL."
             },
             "username": {
               "type": "string",
-              "description": "Configuration for Username."
+              "description": "Authentication username."
             },
             "password": {
               "type": "string",
-              "description": "Configuration for Password."
+              "description": "Authentication password."
             },
             "version": {
               "type": "integer",
-              "description": "Configuration for Version.",
+              "description": "Glances version (3 or 4); required for v4 and later.",
               "enum": [
                 3,
                 4
@@ -529,26 +529,26 @@
             },
             "cpu": {
               "type": "boolean",
-              "description": "Configuration for Cpu.",
+              "description": "Show CPU metrics.",
               "default": true
             },
             "mem": {
               "type": "boolean",
-              "description": "Configuration for Mem.",
+              "description": "Show memory metrics.",
               "default": true
             },
             "cputemp": {
               "type": "boolean",
-              "description": "Configuration for Cputemp.",
+              "description": "Show CPU temperature.",
               "default": false
             },
             "uptime": {
               "type": "boolean",
-              "description": "Configuration for Uptime.",
+              "description": "Show uptime.",
               "default": false
             },
             "disk": {
-              "description": "Configuration for Disk.",
+              "description": "Disk mount point or array of mount points.",
               "oneOf": [
                 {
                   "type": "string"
@@ -563,7 +563,7 @@
             },
             "diskUnits": {
               "type": "string",
-              "description": "Configuration for Disk Units.",
+              "description": "Disk size unit.",
               "enum": [
                 "bytes",
                 "bbytes"
@@ -572,16 +572,16 @@
             },
             "expanded": {
               "type": "boolean",
-              "description": "Configuration for Expanded.",
+              "description": "Show expanded view.",
               "default": false
             },
             "label": {
               "type": "string",
-              "description": "Configuration for Label."
+              "description": "System display label."
             },
             "unit": {
               "type": "string",
-              "description": "Configuration for Unit.",
+              "description": "Temperature unit.",
               "enum": [
                 "metric",
                 "imperial"
@@ -601,19 +601,19 @@
       "properties": {
         "logo": {
           "type": "object",
-          "description": "Configuration for Logo.",
+          "description": "Logo widget. Displays a custom logo.",
           "properties": {
             "icon": {
               "type": "string",
-              "description": "Configuration for Icon."
+              "description": "Logo/icon URL or local path."
             },
             "href": {
               "type": "string",
-              "description": "Configuration for Href."
+              "description": "Link opened when clicking the logo."
             },
             "target": {
               "type": "string",
-              "description": "Configuration for Target.",
+              "description": "Where to open the link.",
               "enum": [
                 "_self",
                 "_blank",
@@ -634,26 +634,26 @@
       "properties": {
         "stocks": {
           "type": "object",
-          "description": "Configuration for Stocks.",
+          "description": "Stock market widget using Finnhub.",
           "properties": {
             "provider": {
               "type": "string",
-              "description": "Configuration for Provider.",
+              "description": "Data provider.",
               "const": "finnhub"
             },
             "color": {
               "type": "boolean",
-              "description": "Configuration for Color.",
+              "description": "Show colors (green/red).",
               "default": true
             },
             "cache": {
               "type": "integer",
-              "description": "Configuration for Cache.",
+              "description": "Cache duration in minutes.",
               "default": 1
             },
             "watchlist": {
               "type": "array",
-              "description": "Configuration for Watchlist.",
+              "description": "List of stock ticker symbols (maximum 8).",
               "items": {
                 "type": "string"
               },
@@ -673,30 +673,30 @@
       "properties": {
         "kubernetes": {
           "type": "object",
-          "description": "Configuration for Kubernetes.",
+          "description": "Kubernetes cluster metrics widget.",
           "properties": {
             "cluster": {
               "type": "object",
               "properties": {
                 "show": {
                   "type": "boolean",
-                  "description": "Configuration for Show."
+                  "description": "Show cluster metrics."
                 },
                 "cpu": {
                   "type": "boolean",
-                  "description": "Configuration for Cpu."
+                  "description": "Show CPU metrics."
                 },
                 "memory": {
                   "type": "boolean",
-                  "description": "Configuration for Memory."
+                  "description": "Show memory metrics."
                 },
                 "showLabel": {
                   "type": "boolean",
-                  "description": "Configuration for Show Label."
+                  "description": "Show label."
                 },
                 "label": {
                   "type": "string",
-                  "description": "Configuration for Label."
+                  "description": "Cluster label."
                 }
               },
               "additionalProperties": false
@@ -706,19 +706,19 @@
               "properties": {
                 "show": {
                   "type": "boolean",
-                  "description": "Configuration for Show."
+                  "description": "Show node metrics."
                 },
                 "cpu": {
                   "type": "boolean",
-                  "description": "Configuration for Cpu."
+                  "description": "Show CPU metrics."
                 },
                 "memory": {
                   "type": "boolean",
-                  "description": "Configuration for Memory."
+                  "description": "Show memory metrics."
                 },
                 "showLabel": {
                   "type": "boolean",
-                  "description": "Configuration for Show Label."
+                  "description": "Show label."
                 }
               },
               "additionalProperties": false
@@ -737,28 +737,28 @@
       "properties": {
         "longhorn": {
           "type": "object",
-          "description": "Configuration for Longhorn.",
+          "description": "Longhorn widget (Kubernetes distributed storage).",
           "properties": {
             "expanded": {
               "type": "boolean",
-              "description": "Configuration for Expanded.",
+              "description": "Expanded view.",
               "default": true
             },
             "total": {
               "type": "boolean",
-              "description": "Configuration for Total."
+              "description": "Show aggregate total."
             },
             "labels": {
               "type": "boolean",
-              "description": "Configuration for Labels."
+              "description": "Show node labels."
             },
             "nodes": {
               "type": "boolean",
-              "description": "Configuration for Nodes."
+              "description": "Show nodes."
             },
             "include": {
               "type": "array",
-              "description": "Configuration for Include.",
+              "description": "Filter to specific nodes.",
               "items": {
                 "type": "string"
               }
@@ -777,30 +777,30 @@
       "properties": {
         "unifi_console": {
           "type": "object",
-          "description": "Configuration for Unifi console.",
+          "description": "UniFi Controller information widget.",
           "required": [
             "url"
           ],
           "properties": {
             "url": {
               "type": "string",
-              "description": "Configuration for Url."
+              "description": "UniFi Controller URL."
             },
             "username": {
               "type": "string",
-              "description": "Configuration for Username."
+              "description": "Username."
             },
             "password": {
               "type": "string",
-              "description": "Configuration for Password."
+              "description": "Password."
             },
             "key": {
               "type": "string",
-              "description": "Configuration for Key."
+              "description": "API key (alternative to username/password)."
             },
             "site": {
               "type": "string",
-              "description": "Configuration for Site."
+              "description": "UniFi site name."
             }
           },
           "additionalProperties": false

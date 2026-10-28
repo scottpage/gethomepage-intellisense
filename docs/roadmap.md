@@ -7,6 +7,13 @@
 - Oxfmt/Oxlint and workspace extension recommendations.
 - Offline locale scaffolding and developer documentation.
 
+## Translation progress
+
+- All seven English schemas have translated descriptions (282 description fields in total).
+- The initial four smaller schemas were committed separately as `b52dae7`.
+- Translation moved away from the unofficial Google Translate endpoint after HTTP 429 errors; the remaining schema descriptions were translated directly with AI assistance, **not** through a replacement API.
+- English snippets and manual in-editor review are still pending.
+
 ## Before PR
 - [ ] Complete and review all English schema descriptions and snippet names, descriptions, and placeholders.
 - [ ] Test both English and Portuguese in the Extension Development Host.

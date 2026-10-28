@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gethomepage.dev/schemas/services.schema.json",
   "title": "GetHomepage Services",
-  "description": "Configuration for Services. Documentation: https://gethomepage.dev/configs/services/",
+  "description": "Schema for GetHomepage services.yaml. Documentation: https://gethomepage.dev/configs/services/",
   "type": "array",
   "items": {
     "$ref": "#/definitions/serviceGroup"
@@ -10,7 +10,7 @@
   "definitions": {
     "serviceGroup": {
       "type": "object",
-      "description": "Configuration for Service Group.",
+      "description": "Service group. The key is the group name displayed on the dashboard.",
       "minProperties": 1,
       "maxProperties": 1,
       "additionalProperties": {
@@ -29,7 +29,7 @@
     },
     "nestedServiceGroup": {
       "type": "object",
-      "description": "Configuration for Nested Service Group.",
+      "description": "Nested service group.",
       "minProperties": 1,
       "maxProperties": 1,
       "additionalProperties": {
@@ -41,7 +41,7 @@
     },
     "serviceEntry": {
       "type": "object",
-      "description": "Configuration for Service Entry.",
+      "description": "Service entry. The key is the name displayed on the card.",
       "minProperties": 1,
       "maxProperties": 1,
       "additionalProperties": {
@@ -50,27 +50,27 @@
     },
     "serviceProperties": {
       "type": "object",
-      "description": "Configuration for Service Properties.",
+      "description": "Properties of an individual service.",
       "properties": {
         "href": {
           "type": "string",
-          "description": "Configuration for Href."
+          "description": "Service URL (opened when clicking the card)."
         },
         "icon": {
           "type": "string",
-          "description": "Configuration for Icon."
+          "description": "Service icon. Accepts a URL, mdi-NAME, si-NAME, sh-NAME, or a local filename in /icons/."
         },
         "description": {
           "type": "string",
-          "description": "Configuration for Description."
+          "description": "Description displayed beneath the service name."
         },
         "id": {
           "type": "string",
-          "description": "Configuration for Id."
+          "description": "Custom ID for targeting with custom CSS."
         },
         "target": {
           "type": "string",
-          "description": "Configuration for Target.",
+          "description": "Link-opening behavior.",
           "enum": [
             "_self",
             "_blank",
@@ -79,11 +79,11 @@
         },
         "siteMonitor": {
           "type": "string",
-          "description": "Configuration for Site Monitor."
+          "description": "URL to monitor service availability (replaces deprecated 'ping')."
         },
         "statusStyle": {
           "type": "string",
-          "description": "Configuration for Status Style.",
+          "description": "Status indicator style.",
           "enum": [
             "dot",
             "basic"
@@ -91,39 +91,39 @@
         },
         "server": {
           "type": "string",
-          "description": "Configuration for Server."
+          "description": "Docker server name (must match a key in docker.yaml)."
         },
         "container": {
           "type": "string",
-          "description": "Configuration for Container."
+          "description": "Docker container name."
         },
         "showStats": {
           "type": "boolean",
-          "description": "Configuration for Show Stats."
+          "description": "Show container statistics when clicked."
         },
         "namespace": {
           "type": "string",
-          "description": "Configuration for Namespace."
+          "description": "Kubernetes namespace."
         },
         "app": {
           "type": "string",
-          "description": "Configuration for App."
+          "description": "Kubernetes application label selector."
         },
         "podSelector": {
           "type": "string",
-          "description": "Configuration for Pod Selector."
+          "description": "Custom Kubernetes pod selector."
         },
         "proxmoxNode": {
           "type": "string",
-          "description": "Configuration for Proxmox Node."
+          "description": "Proxmox node name (must match a key in proxmox.yaml)."
         },
         "proxmoxVMID": {
           "type": "integer",
-          "description": "Configuration for Proxmox VMID."
+          "description": "Proxmox VM or LXC ID."
         },
         "proxmoxType": {
           "type": "string",
-          "description": "Configuration for Proxmox Type.",
+          "description": "Proxmox virtualization type.",
           "enum": [
             "qemu",
             "lxc"
@@ -132,16 +132,16 @@
         },
         "ping": {
           "type": "string",
-          "description": "Configuration for Ping.",
+          "description": "⚠️ DEPRECATED: Use 'siteMonitor' instead. Host to check for availability.",
           "deprecated": true
         },
         "widget": {
           "$ref": "#/definitions/widget",
-          "description": "Configuration for Widget."
+          "description": "Single widget displaying service data."
         },
         "widgets": {
           "type": "array",
-          "description": "Configuration for Widgets.",
+          "description": "Multiple widgets for the service.",
           "items": {
             "$ref": "#/definitions/widget"
           }
@@ -151,14 +151,14 @@
     },
     "widget": {
       "type": "object",
-      "description": "Configuration for Widget.",
+      "description": "Service widget configuration.",
       "required": [
         "type"
       ],
       "properties": {
         "type": {
           "type": "string",
-          "description": "Configuration for Type. Documentation: https://gethomepage.dev/widgets/",
+          "description": "Widget type. See https://gethomepage.dev/widgets/ for the full list.",
           "enum": [
             "adguard",
             "apcups",
@@ -318,30 +318,30 @@
         },
         "url": {
           "type": "string",
-          "description": "Configuration for Url."
+          "description": "Service API URL."
         },
         "key": {
           "type": "string",
-          "description": "Configuration for Key."
+          "description": "API key or authentication token."
         },
         "password": {
           "type": "string",
-          "description": "Configuration for Password."
+          "description": "Authentication password."
         },
         "username": {
           "type": "string",
-          "description": "Configuration for Username."
+          "description": "Authentication username."
         },
         "headers": {
           "type": "object",
-          "description": "Configuration for Headers.",
+          "description": "Custom HTTP headers for API requests.",
           "additionalProperties": {
             "type": "string"
           }
         },
         "fields": {
           "type": "array",
-          "description": "Configuration for Fields.",
+          "description": "Fields to display in the widget (varies by widget type).",
           "items": {
             "type": "string"
           }
@@ -351,66 +351,66 @@
             "integer",
             "string"
           ],
-          "description": "Configuration for Env."
+          "description": "Environment ID (Portainer)."
         },
         "node": {
           "type": "string",
-          "description": "Configuration for Node."
+          "description": "Specific node name (Proxmox)."
         },
         "slug": {
           "type": "string",
-          "description": "Configuration for Slug."
+          "description": "Status page slug (Uptime Kuma)."
         },
         "site": {
           "type": "string",
-          "description": "Configuration for Site."
+          "description": "Site name (UniFi)."
         },
         "version": {
           "type": "integer",
-          "description": "Configuration for Version."
+          "description": "API version (Pi-hole: 5 or 6; Glances: 3 or 4; Grafana: 1 or 2)."
         },
         "enableQueue": {
           "type": "boolean",
-          "description": "Configuration for Enable Queue."
+          "description": "Show detailed queue information (Sonarr/Radarr)."
         },
         "enableBlocks": {
           "type": "boolean",
-          "description": "Configuration for Enable Blocks.",
+          "description": "Enable information blocks (Emby).",
           "default": false
         },
         "enableNowPlaying": {
           "type": "boolean",
-          "description": "Configuration for Enable Now Playing.",
+          "description": "Show currently playing media (Emby/Jellyfin).",
           "default": true
         },
         "enableUser": {
           "type": "boolean",
-          "description": "Configuration for Enable User.",
+          "description": "Show user information (Emby).",
           "default": false
         },
         "enableMediaControl": {
           "type": "boolean",
-          "description": "Configuration for Enable Media Control.",
+          "description": "Enable media controls (Emby).",
           "default": true
         },
         "showEpisodeNumber": {
           "type": "boolean",
-          "description": "Configuration for Show Episode Number.",
+          "description": "Show episode numbers (Emby).",
           "default": false
         },
         "expandOneStreamToTwoRows": {
           "type": "boolean",
-          "description": "Configuration for Expand One Stream To Two Rows.",
+          "description": "Expand a single stream to two rows (Emby).",
           "default": true
         },
         "enableRecentEvents": {
           "type": "boolean",
-          "description": "Configuration for Enable Recent Events.",
+          "description": "Show recent events (Frigate).",
           "default": false
         },
         "alerts": {
           "type": "string",
-          "description": "Configuration for Alerts.",
+          "description": "Alert source (Grafana).",
           "enum": [
             "grafana",
             "alertmanager"
@@ -418,41 +418,41 @@
         },
         "environment": {
           "type": "string",
-          "description": "Configuration for Environment."
+          "description": "Environment name or ID (Dockhand)."
         },
         "custom": {
           "type": "array",
-          "description": "Configuration for Custom.",
+          "description": "Custom states/templates (Home Assistant).",
           "items": {
             "type": "object",
             "properties": {
               "state": {
                 "type": "string",
-                "description": "Configuration for State."
+                "description": "Home Assistant entity ID."
               },
               "template": {
                 "type": "string",
-                "description": "Configuration for Template."
+                "description": "Jinja2 template."
               },
               "label": {
                 "type": "string",
-                "description": "Configuration for Label."
+                "description": "Display label."
               },
               "value": {
                 "type": "string",
-                "description": "Configuration for Value."
+                "description": "Value template."
               }
             }
           }
         },
         "refreshInterval": {
           "type": "integer",
-          "description": "Configuration for Refresh Interval.",
+          "description": "Refresh interval in milliseconds (Custom API, iFrame).",
           "default": 10000
         },
         "method": {
           "type": "string",
-          "description": "Configuration for Method.",
+          "description": "HTTP method (Custom API).",
           "enum": [
             "GET",
             "POST",
@@ -463,7 +463,7 @@
           "default": "GET"
         },
         "requestBody": {
-          "description": "Configuration for Request Body.",
+          "description": "Request body (Custom API).",
           "oneOf": [
             {
               "type": "string"
@@ -475,7 +475,7 @@
         },
         "display": {
           "type": "string",
-          "description": "Configuration for Display.",
+          "description": "Display mode (Custom API).",
           "enum": [
             "block",
             "list",
@@ -484,35 +484,35 @@
         },
         "mappings": {
           "type": "array",
-          "description": "Configuration for Mappings.",
+          "description": "Field mappings (Custom API).",
           "items": {
             "$ref": "#/definitions/customApiMapping"
           }
         },
         "src": {
           "type": "string",
-          "description": "Configuration for Src."
+          "description": "URL to embed (iFrame)."
         },
         "classes": {
           "type": "string",
-          "description": "Configuration for Classes."
+          "description": "Tailwind height classes (iFrame)."
         },
         "referrerPolicy": {
           "type": "string",
-          "description": "Configuration for Referrer Policy."
+          "description": "Referrer policy (iFrame)."
         },
         "allowPolicy": {
           "type": "string",
-          "description": "Configuration for Allow Policy."
+          "description": "Permissions policy (iFrame)."
         },
         "allowFullscreen": {
           "type": "boolean",
-          "description": "Configuration for Allow Fullscreen.",
+          "description": "Allow fullscreen (iFrame).",
           "default": true
         },
         "loadingStrategy": {
           "type": "string",
-          "description": "Configuration for Loading Strategy.",
+          "description": "Loading strategy (iFrame).",
           "enum": [
             "eager",
             "lazy"
@@ -520,7 +520,7 @@
         },
         "allowScrolling": {
           "type": "string",
-          "description": "Configuration for Allow Scrolling.",
+          "description": "Allow scrolling (iFrame).",
           "enum": [
             "yes",
             "no"
@@ -528,26 +528,26 @@
         },
         "highlight": {
           "$ref": "#/definitions/highlight",
-          "description": "Configuration for Highlight."
+          "description": "Highlighting rules for widget metrics."
         }
       },
       "additionalProperties": true
     },
     "customApiMapping": {
       "type": "object",
-      "description": "Configuration for Custom Api Mapping.",
+      "description": "Field mapping for Custom API.",
       "properties": {
         "field": {
           "type": "string",
-          "description": "Configuration for Field."
+          "description": "Field path using dot notation (e.g. data.value)."
         },
         "label": {
           "type": "string",
-          "description": "Configuration for Label."
+          "description": "Display label."
         },
         "format": {
           "type": "string",
-          "description": "Configuration for Format.",
+          "description": "Value display format.",
           "enum": [
             "text",
             "number",
@@ -563,7 +563,7 @@
         },
         "remap": {
           "type": "array",
-          "description": "Configuration for Remap.",
+          "description": "Value remapping.",
           "items": {
             "type": "object",
             "properties": {
@@ -576,19 +576,19 @@
         },
         "scale": {
           "type": "number",
-          "description": "Configuration for Scale."
+          "description": "Multiplication factor."
         },
         "prefix": {
           "type": "string",
-          "description": "Configuration for Prefix."
+          "description": "Prefix added to the value."
         },
         "suffix": {
           "type": "string",
-          "description": "Configuration for Suffix."
+          "description": "Suffix added to the value."
         },
         "additionalField": {
           "type": "object",
-          "description": "Configuration for Additional Field.",
+          "description": "Secondary field (list mode).",
           "properties": {
             "field": {
               "type": "string"
@@ -605,27 +605,27 @@
     },
     "highlight": {
       "type": "object",
-      "description": "Configuration for Highlight.",
+      "description": "Highlighting rules for widget fields.",
       "additionalProperties": {
         "type": "object",
         "properties": {
           "numeric": {
             "type": "array",
-            "description": "Configuration for Numeric.",
+            "description": "Numeric highlighting rules.",
             "items": {
               "$ref": "#/definitions/highlightNumericRule"
             }
           },
           "string": {
             "type": "array",
-            "description": "Configuration for String.",
+            "description": "Text highlighting rules.",
             "items": {
               "$ref": "#/definitions/highlightStringRule"
             }
           },
           "valueOnly": {
             "type": "boolean",
-            "description": "Configuration for Value Only.",
+            "description": "Highlight only the value portion.",
             "default": false
           }
         }
@@ -636,7 +636,7 @@
       "properties": {
         "level": {
           "type": "string",
-          "description": "Configuration for Level.",
+          "description": "Severity level.",
           "enum": [
             "good",
             "warn",
@@ -645,7 +645,7 @@
         },
         "when": {
           "type": "string",
-          "description": "Configuration for When.",
+          "description": "Numeric comparison operator.",
           "enum": [
             "gt",
             "gte",
@@ -659,11 +659,11 @@
         },
         "value": {
           "type": "number",
-          "description": "Configuration for Value."
+          "description": "Comparison value."
         },
         "negate": {
           "type": "boolean",
-          "description": "Configuration for Negate.",
+          "description": "Invert the rule.",
           "default": false
         }
       },
@@ -678,7 +678,7 @@
       "properties": {
         "level": {
           "type": "string",
-          "description": "Configuration for Level.",
+          "description": "Severity level.",
           "enum": [
             "good",
             "warn",
@@ -687,7 +687,7 @@
         },
         "when": {
           "type": "string",
-          "description": "Configuration for When.",
+          "description": "Text comparison operator.",
           "enum": [
             "equals",
             "includes",
@@ -698,21 +698,21 @@
         },
         "value": {
           "type": "string",
-          "description": "Configuration for Value."
+          "description": "Comparison value."
         },
         "negate": {
           "type": "boolean",
-          "description": "Configuration for Negate.",
+          "description": "Invert the rule.",
           "default": false
         },
         "caseSensitive": {
           "type": "boolean",
-          "description": "Configuration for Case Sensitive.",
+          "description": "Case-sensitive comparison.",
           "default": false
         },
         "flags": {
           "type": "string",
-          "description": "Configuration for Flags."
+          "description": "Regex flags (when when=regex)."
         }
       },
       "required": [
