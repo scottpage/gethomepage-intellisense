@@ -25,6 +25,12 @@
     "url": "https://github.com/nicolasaigner/gethomepage-intellisense/issues"
   },
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Scott Page",
+      "url": "https://github.com/scottpage"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/nicolasaigner/gethomepage-intellisense"
