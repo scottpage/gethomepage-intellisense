@@ -12,14 +12,16 @@
 - All seven English schemas have translated descriptions (282 description fields in total).
 - The initial four smaller schemas were committed separately as `b52dae7`.
 - Translation moved away from the unofficial Google Translate endpoint after HTTP 429 errors; the remaining schema descriptions were translated directly with AI assistance, **not** through a replacement API.
-- English snippets and manual in-editor review are still pending.
+- All 24 English snippets now have descriptive English labels and English placeholder defaults; existing Portuguese completion aliases remain available for compatibility.
+- Manual English/Portuguese testing in the Extension Development Host is still pending.
 
 ## Before PR
-- [ ] Complete and review all English schema descriptions and snippet names, descriptions, and placeholders.
+- [x] Complete English schema descriptions and snippet names, descriptions, and placeholders.
 - [ ] Test both English and Portuguese in the Extension Development Host.
 - [ ] Verify schema validation, hover descriptions, and completion/snippet behavior.
-- [ ] Run TypeScript, lint, formatting, tests, and VSIX packaging.
-- [ ] Review diff and packaging contents before pushing and opening upstream PR.
+- [x] Run TypeScript, lint, formatting, tests, and VSIX packaging.
+- [x] Open upstream draft PR #5 for early feedback.
+- [ ] Review final diff and packaging contents before marking the PR ready for review.
 
 ## Future
 - Add an untranslated-string report for translation completeness.

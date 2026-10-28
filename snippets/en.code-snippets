@@ -4,9 +4,10 @@
     "prefix": [
       "service",
       "novo serviço",
-      "servico"
+      "servico",
+      "new service"
     ],
-    "description": "GetHomepage snippet: Service",
+    "description": "Create a service card with an integration widget.",
     "body": [
       "- ${1:Service Name}:",
       "    icon: ${2:https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/${3:icon}.svg}",
@@ -23,9 +24,10 @@
     "prefix": [
       "service-simple",
       "serviço simples",
-      "servico simples"
+      "servico simples",
+      "simple service"
     ],
-    "description": "GetHomepage snippet: Service simple",
+    "description": "Create a basic service card without a widget.",
     "body": [
       "- ${1:Service Name}:",
       "    icon: ${2:https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/${3:icon}.svg}",
@@ -40,7 +42,7 @@
       "serviço proxmox",
       "proxmox service"
     ],
-    "description": "GetHomepage snippet: Service proxmox",
+    "description": "Create a service card linked to a Proxmox VM or LXC.",
     "body": [
       "- ${1:Service Name}:",
       "    icon: ${2:https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/${3:icon}.svg}",
@@ -61,7 +63,7 @@
       "serviço docker",
       "docker service"
     ],
-    "description": "GetHomepage snippet: Service docker",
+    "description": "Create a service card linked to a Docker container.",
     "body": [
       "- ${1:Service Name}:",
       "    icon: ${2:https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/${3:icon}.svg}",
@@ -79,9 +81,10 @@
     "prefix": [
       "group",
       "grupo",
-      "service-group"
+      "service-group",
+      "service group"
     ],
-    "description": "GetHomepage snippet: Group",
+    "description": "Create a group containing a service card.",
     "body": [
       "# =============================================================================",
       "# ${1:GROUP NAME}",
@@ -99,7 +102,7 @@
       "bookmark",
       "favorito"
     ],
-    "description": "GetHomepage snippet: Bookmark",
+    "description": "Create a bookmark with a link and icon.",
     "body": [
       "- ${1:Bookmark Name}:",
       "    - abbr: ${2:AB}",
@@ -113,9 +116,10 @@
     "prefix": [
       "bookmark-group",
       "grupo bookmarks",
-      "grupo favoritos"
+      "grupo favoritos",
+      "bookmarks group"
     ],
-    "description": "GetHomepage snippet: Bookmark group",
+    "description": "Create a group containing a bookmark.",
     "body": [
       "- ${1:Group Name}:",
       "    - ${2:First Bookmark}:",
@@ -130,9 +134,10 @@
     "prefix": [
       "glances",
       "widget glances",
-      "monitoramento"
+      "monitoramento",
+      "system monitoring"
     ],
-    "description": "GetHomepage snippet: Glances",
+    "description": "Add a Glances system-monitoring widget.",
     "body": [
       "- glances:",
       "    url: ${1:http://ip:61208}",
@@ -151,9 +156,10 @@
     "prefix": [
       "resources",
       "recursos",
-      "widget resources"
+      "widget resources",
+      "system resources"
     ],
-    "description": "GetHomepage snippet: Resources",
+    "description": "Add a local system resources widget.",
     "body": [
       "- resources:",
       "    cpu: true",
@@ -168,9 +174,10 @@
       "search",
       "busca",
       "pesquisa",
-      "widget search"
+      "widget search",
+      "search widget"
     ],
-    "description": "GetHomepage snippet: Search",
+    "description": "Add a search bar widget.",
     "body": [
       "- search:",
       "    provider: ${1|google,duckduckgo,bing,baidu,brave|}",
@@ -184,9 +191,11 @@
     "prefix": [
       "datetime",
       "data hora",
-      "widget datetime"
+      "widget datetime",
+      "date time",
+      "date-time"
     ],
-    "description": "GetHomepage snippet: Datetime",
+    "description": "Add a date and time widget.",
     "body": [
       "- datetime:",
       "    locale: ${1:en-US}",
@@ -200,9 +209,10 @@
     "prefix": [
       "greeting",
       "saudação",
-      "widget greeting"
+      "widget greeting",
+      "welcome"
     ],
-    "description": "GetHomepage snippet: Greeting",
+    "description": "Add a greeting message widget.",
     "body": [
       "- greeting:",
       "    text_size: ${1|xl,4xl,3xl,2xl,md,sm,xs|}",
@@ -215,9 +225,10 @@
       "weather",
       "clima",
       "openweathermap",
-      "widget weather"
+      "widget weather",
+      "weather widget"
     ],
-    "description": "GetHomepage snippet: Weather",
+    "description": "Add an OpenWeatherMap weather widget.",
     "body": [
       "- openweathermap:",
       "    label: ${1:City}",
@@ -236,7 +247,7 @@
       "openmeteo",
       "widget openmeteo"
     ],
-    "description": "GetHomepage snippet: Openmeteo",
+    "description": "Add an Open-Meteo weather widget without an API key.",
     "body": [
       "- openmeteo:",
       "    label: ${1:City}",
@@ -252,13 +263,14 @@
     "prefix": [
       "customapi",
       "api custom",
-      "widget customapi"
+      "widget customapi",
+      "custom api"
     ],
-    "description": "GetHomepage snippet: Customapi",
+    "description": "Configure a Custom API service widget.",
     "body": [
       "widget:",
       "  type: customapi",
-      "  url: ${1:http://ip:porta/api}",
+      "  url: ${1:http://ip:port/api}",
       "  refreshInterval: ${2:10000}",
       "  display: ${3|block,list,dynamic-list|}",
       "  mappings:",
@@ -273,7 +285,7 @@
       "iframe",
       "widget iframe"
     ],
-    "description": "GetHomepage snippet: Iframe",
+    "description": "Embed an external page using an iframe widget.",
     "body": [
       "widget:",
       "  type: iframe",
@@ -288,9 +300,10 @@
     "scope": "yaml-homepage,yaml",
     "prefix": [
       "layout",
-      "layout grupo"
+      "layout grupo",
+      "group layout"
     ],
-    "description": "GetHomepage snippet: Layout",
+    "description": "Configure the layout of a dashboard group.",
     "body": [
       "${1:Group Name}:",
       "  style: ${2|row,column|}",
@@ -304,7 +317,7 @@
       "docker",
       "docker server"
     ],
-    "description": "GetHomepage snippet: Docker",
+    "description": "Configure a Docker server connection.",
     "body": [
       "${1:my-docker}:",
       "  ${2|socket: /var/run/docker.sock,host: 127.0.0.1|}"
@@ -317,7 +330,7 @@
       "proxmox node",
       "nó proxmox"
     ],
-    "description": "GetHomepage snippet: Proxmox",
+    "description": "Configure a Proxmox node connection.",
     "body": [
       "${1:pve}:",
       "  url: ${2:https://proxmox.local:8006}",
@@ -331,10 +344,10 @@
       "logo",
       "widget logo"
     ],
-    "description": "GetHomepage snippet: Logo",
+    "description": "Add a custom logo widget.",
     "body": [
       "- logo:",
-      "    icon: ${1:https://url-do-logo.svg}",
+      "    icon: ${1:https://example.com/logo.svg}",
       "    href: ${2:https://example.com}",
       "    target: ${3|_blank,_self|}"
     ]
@@ -347,7 +360,7 @@
       "bolsa",
       "widget stocks"
     ],
-    "description": "GetHomepage snippet: Stocks",
+    "description": "Add a stock market watchlist widget.",
     "body": [
       "- stocks:",
       "    provider: finnhub",
@@ -365,7 +378,7 @@
       "fundo",
       "imagem fundo"
     ],
-    "description": "GetHomepage snippet: Background",
+    "description": "Configure a background image.",
     "body": [
       "background:",
       "  image: ${1:https://images.unsplash.com/photo-xxx}",
@@ -379,9 +392,10 @@
     "prefix": [
       "quicklaunch",
       "quick launch",
-      "pesquisa rápida"
+      "pesquisa rápida",
+      "quick search"
     ],
-    "description": "GetHomepage snippet: Quicklaunch",
+    "description": "Configure Quick Launch search.",
     "body": [
       "quicklaunch:",
       "  searchDescriptions: true",
@@ -395,9 +409,10 @@
     "scope": "yaml-homepage,yaml",
     "prefix": [
       "providers",
-      "provedores"
+      "provedores",
+      "api providers"
     ],
-    "description": "GetHomepage snippet: Providers",
+    "description": "Configure shared API provider credentials.",
     "body": [
       "providers:",
       "  ${1|openweathermap,weatherapi,finnhub|}: ${2:api_key}"

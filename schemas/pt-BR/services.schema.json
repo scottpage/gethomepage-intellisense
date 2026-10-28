@@ -173,6 +173,7 @@
             "bazarr",
             "beszel",
             "booklore",
+            "bookorbit",
             "caddy",
             "calendar",
             "calibreweb",
@@ -214,6 +215,7 @@
             "homeassistant",
             "homebox",
             "homebridge",
+            "iframe",
             "immich",
             "jackett",
             "jdownloader",
@@ -272,6 +274,7 @@
             "pyload",
             "qbittorrent",
             "qnap",
+            "qui",
             "radarr",
             "readarr",
             "romm",
@@ -312,8 +315,7 @@
             "whatsupdocker",
             "xteve",
             "yourspotify",
-            "zabbix",
-            "iframe"
+            "zabbix"
           ]
         },
         "url": {
@@ -529,6 +531,25 @@
         "highlight": {
           "$ref": "#/definitions/highlight",
           "description": "Regras de destaque para métricas do widget."
+        },
+        "volume": {
+          "type": "string",
+          "description": "Volume de armazenamento opcional a monitorar em widgets compatíveis (ex.: volume_2 para Synology DiskStation ou o nome do volume para QNAP)."
+        },
+        "hideErrors": {
+          "type": "boolean",
+          "description": "Oculta os erros de API deste widget."
+        },
+        "instance": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "description": "ID opcional da instância qui; omita para agregar todas as instâncias."
         }
       },
       "additionalProperties": true

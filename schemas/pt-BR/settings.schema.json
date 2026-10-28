@@ -211,7 +211,7 @@
     },
     "maxBookmarkGroupColumns": {
       "type": "integer",
-      "description": "Máximo de colunas para grupos de bookmarks (5-8).",
+      "description": "Número máximo de colunas dos grupos de favoritos.",
       "minimum": 5,
       "maximum": 8,
       "default": 6
@@ -317,12 +317,36 @@
             "duckduckgo",
             "bing",
             "baidu",
-            "brave"
+            "brave",
+            "custom"
           ]
         },
         "url": {
           "type": "string",
           "description": "URL personalizada para provedor de busca custom."
+        },
+        "mobileButtonPosition": {
+          "type": "string",
+          "enum": [
+            "top-left",
+            "top-right",
+            "bottom-left",
+            "bottom-right"
+          ],
+          "description": "Posição do botão de busca rápida em dispositivos móveis."
+        },
+        "suggestionUrl": {
+          "type": "string",
+          "description": "URL de sugestões de preenchimento automático para um provedor de busca personalizado."
+        },
+        "target": {
+          "type": "string",
+          "enum": [
+            "_blank",
+            "_self",
+            "_top"
+          ],
+          "description": "Onde abrir os resultados da busca rápida personalizada."
         }
       },
       "additionalProperties": false
@@ -424,6 +448,54 @@
       "additionalProperties": {
         "$ref": "#/definitions/layoutGroup"
       }
+    },
+    "cardStyle": {
+      "type": "string",
+      "enum": [
+        "default",
+        "hairline"
+      ],
+      "description": "Aparência dos cartões: sombra padrão ou borda fina."
+    },
+    "blockStyle": {
+      "type": "string",
+      "enum": [
+        "default",
+        "refined"
+      ],
+      "description": "Estilo dos blocos de métricas dos widgets de serviço."
+    },
+    "font": {
+      "type": "string",
+      "enum": [
+        "plex",
+        "plexData"
+      ],
+      "description": "Fonte do painel: Manrope (padrão), Plex Mono em tudo ou apenas nos dados."
+    },
+    "iconStyle": {
+      "type": "string",
+      "enum": [
+        "gradient",
+        "theme"
+      ],
+      "description": "Aparência dos ícones: gradiente (padrão) ou de acordo com o tema."
+    },
+    "hideVersion": {
+      "type": "boolean",
+      "description": "Oculta a versão do Homepage no rodapé."
+    },
+    "disableUpdateCheck": {
+      "type": "boolean",
+      "description": "Desativa a verificação de atualizações do Homepage."
+    },
+    "hideErrors": {
+      "type": "boolean",
+      "description": "Oculta globalmente os erros de API dos widgets."
+    },
+    "logpath": {
+      "type": "string",
+      "description": "Diretório dos arquivos de log do Homepage."
     }
   },
   "definitions": {

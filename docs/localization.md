@@ -19,7 +19,7 @@ The offline command copies all seven schemas to `schemas/<locale>/`, copies `sni
 
 Our original automated translation script (`translate-locales.cjs`) called an unofficial Google Translate endpoint. The service responded with HTTP 429 rate-limit errors, preventing reliable bulk translation. We did **not** switch to a different translation API: the English schema descriptions were subsequently translated directly with AI assistance and checked against the Portuguese source, without making external translation API requests.
 
-The seven English schema files now have translated descriptions. English snippet translation and in-editor language review remain outstanding. Future contributors may translate manually, use AI assistance, or use a translation service of their choice; translations should be reviewed for technical accuracy.
+The seven English schema files now have translated descriptions. English snippet text has also been translated, with Portuguese prefix aliases preserved for compatibility. In-editor language review remains outstanding. Future contributors may translate manually, use AI assistance, or use a translation service of their choice; translations should be reviewed for technical accuracy.
 
 ## Why languages are community-contributed
 

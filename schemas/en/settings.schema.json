@@ -211,7 +211,7 @@
     },
     "maxBookmarkGroupColumns": {
       "type": "integer",
-      "description": "Maximum number of bookmark group columns (5–8).",
+      "description": "Maximum number of bookmark-group columns.",
       "minimum": 5,
       "maximum": 8,
       "default": 6
@@ -317,12 +317,36 @@
             "duckduckgo",
             "bing",
             "baidu",
-            "brave"
+            "brave",
+            "custom"
           ]
         },
         "url": {
           "type": "string",
           "description": "Custom URL for a custom search provider."
+        },
+        "mobileButtonPosition": {
+          "type": "string",
+          "enum": [
+            "top-left",
+            "top-right",
+            "bottom-left",
+            "bottom-right"
+          ],
+          "description": "Position of the mobile Quick Launch button."
+        },
+        "suggestionUrl": {
+          "type": "string",
+          "description": "Autocomplete suggestions URL for a custom search provider."
+        },
+        "target": {
+          "type": "string",
+          "enum": [
+            "_blank",
+            "_self",
+            "_top"
+          ],
+          "description": "Where custom Quick Launch results open."
         }
       },
       "additionalProperties": false
@@ -424,6 +448,54 @@
       "additionalProperties": {
         "$ref": "#/definitions/layoutGroup"
       }
+    },
+    "cardStyle": {
+      "type": "string",
+      "enum": [
+        "default",
+        "hairline"
+      ],
+      "description": "Card appearance: default shadow or hairline border."
+    },
+    "blockStyle": {
+      "type": "string",
+      "enum": [
+        "default",
+        "refined"
+      ],
+      "description": "Style for metric blocks inside service widgets."
+    },
+    "font": {
+      "type": "string",
+      "enum": [
+        "plex",
+        "plexData"
+      ],
+      "description": "Dashboard font: Manrope (default), Plex Mono everywhere, or Plex Mono for data."
+    },
+    "iconStyle": {
+      "type": "string",
+      "enum": [
+        "gradient",
+        "theme"
+      ],
+      "description": "Icon appearance: gradient (default) or theme-matched."
+    },
+    "hideVersion": {
+      "type": "boolean",
+      "description": "Hide the Homepage version in the footer."
+    },
+    "disableUpdateCheck": {
+      "type": "boolean",
+      "description": "Disable checking for Homepage updates."
+    },
+    "hideErrors": {
+      "type": "boolean",
+      "description": "Hide widget API error messages globally."
+    },
+    "logpath": {
+      "type": "string",
+      "description": "Directory for Homepage log files."
     }
   },
   "definitions": {

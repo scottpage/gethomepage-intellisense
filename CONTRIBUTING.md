@@ -25,7 +25,7 @@ To start from Portuguese instead of English:
 npm run locale:add -- --locale es-ES --from pt-BR
 ```
 
-Then translate the new files in `schemas/<locale>/` and `snippets/<locale>.code-snippets`. **Only translate human-facing text**; never change YAML property names, enums, or validation rules. See [docs/localization.md](docs/localization.md) for details. English schema descriptions have been translated directly without a translation API; English snippets and final review are still in progress.
+Then translate the new files in `schemas/<locale>/` and `snippets/<locale>.code-snippets`. **Only translate human-facing text**; never change YAML property names, enums, or validation rules. See [docs/localization.md](docs/localization.md) for details. English schema descriptions have been translated directly without a translation API; English snippets have also been translated; final in-editor review is still in progress.
 
 ### Why not include every language already?
 

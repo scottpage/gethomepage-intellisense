@@ -173,6 +173,7 @@
             "bazarr",
             "beszel",
             "booklore",
+            "bookorbit",
             "caddy",
             "calendar",
             "calibreweb",
@@ -214,6 +215,7 @@
             "homeassistant",
             "homebox",
             "homebridge",
+            "iframe",
             "immich",
             "jackett",
             "jdownloader",
@@ -272,6 +274,7 @@
             "pyload",
             "qbittorrent",
             "qnap",
+            "qui",
             "radarr",
             "readarr",
             "romm",
@@ -312,8 +315,7 @@
             "whatsupdocker",
             "xteve",
             "yourspotify",
-            "zabbix",
-            "iframe"
+            "zabbix"
           ]
         },
         "url": {
@@ -529,6 +531,25 @@
         "highlight": {
           "$ref": "#/definitions/highlight",
           "description": "Highlighting rules for widget metrics."
+        },
+        "volume": {
+          "type": "string",
+          "description": "Optional storage volume to monitor for supported widgets (e.g. volume_2 for Synology DiskStation, or a volume name for QNAP)."
+        },
+        "hideErrors": {
+          "type": "boolean",
+          "description": "Hide API errors for this widget."
+        },
+        "instance": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "description": "Optional qui instance ID; omit to aggregate all instances."
         }
       },
       "additionalProperties": true
