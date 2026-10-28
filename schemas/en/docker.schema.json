@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gethomepage.dev/schemas/docker.schema.json",
   "title": "GetHomepage Docker Configuration",
-  "description": "Configuration for Docker. Documentation: https://gethomepage.dev/configs/docker/",
+  "description": "Schema for GetHomepage docker.yaml. Documentation: https://gethomepage.dev/configs/docker/",
   "type": "object",
   "additionalProperties": {
     "$ref": "#/definitions/dockerServer"
@@ -10,24 +10,24 @@
   "definitions": {
     "dockerServer": {
       "type": "object",
-      "description": "Configuration for Docker Server.",
+      "description": "Docker server configuration. The key is the name referenced by the services’ server setting.",
       "properties": {
         "host": {
           "type": "string",
-          "description": "Configuration for Host."
+          "description": "IP address or hostname of the Docker host."
         },
         "port": {
           "type": "integer",
-          "description": "Configuration for Port.",
+          "description": "Docker API port.",
           "default": 2375
         },
         "socket": {
           "type": "string",
-          "description": "Configuration for Socket."
+          "description": "Path to docker.sock, for example /var/run/docker.sock."
         },
         "protocol": {
           "type": "string",
-          "description": "Configuration for Protocol.",
+          "description": "Connection protocol.",
           "enum": [
             "http",
             "https"
@@ -36,38 +36,38 @@
         },
         "swarm": {
           "type": "boolean",
-          "description": "Configuration for Swarm.",
+          "description": "Enable Docker Swarm mode.",
           "default": false
         },
         "tls": {
           "type": "object",
-          "description": "Configuration for Tls.",
+          "description": "TLS configuration for a secure connection.",
           "properties": {
             "keyFile": {
               "type": "string",
-              "description": "Configuration for Key File."
+              "description": "Path to key.pem (relative to the config/ directory)."
             },
             "certFile": {
               "type": "string",
-              "description": "Configuration for Cert File."
+              "description": "Path to cert.pem (relative to the config/ directory)."
             },
             "caFile": {
               "type": "string",
-              "description": "Configuration for Ca File."
+              "description": "Path to ca.pem (relative to the config/ directory)."
             }
           },
           "additionalProperties": false
         },
         "headers": {
           "type": "object",
-          "description": "Configuration for Headers.",
+          "description": "Custom HTTP headers.",
           "additionalProperties": {
             "type": "string"
           }
         },
         "instanceName": {
           "type": "string",
-          "description": "Configuration for Instance Name."
+          "description": "Instance name (for multi-instance configurations)."
         }
       },
       "oneOf": [

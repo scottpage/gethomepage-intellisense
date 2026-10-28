@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://gethomepage.dev/schemas/bookmarks.schema.json",
   "title": "GetHomepage Bookmarks",
-  "description": "Configuration for Bookmarks. Documentation: https://gethomepage.dev/configs/bookmarks/",
+  "description": "Schema for GetHomepage bookmarks.yaml. Documentation: https://gethomepage.dev/configs/bookmarks/",
   "type": "array",
   "items": {
     "$ref": "#/definitions/bookmarkGroup"
@@ -10,7 +10,7 @@
   "definitions": {
     "bookmarkGroup": {
       "type": "object",
-      "description": "Configuration for Bookmark Group.",
+      "description": "Bookmark group. The key is the group name displayed on the dashboard.",
       "minProperties": 1,
       "maxProperties": 1,
       "additionalProperties": {
@@ -22,7 +22,7 @@
     },
     "bookmarkEntry": {
       "type": "object",
-      "description": "Configuration for Bookmark Entry.",
+      "description": "Bookmark entry. The key is the displayed name.",
       "minProperties": 1,
       "maxProperties": 1,
       "additionalProperties": {
@@ -36,35 +36,35 @@
     },
     "bookmarkProperties": {
       "type": "object",
-      "description": "Configuration for Bookmark Properties.",
+      "description": "Properties of a bookmark.",
       "required": [
         "href"
       ],
       "properties": {
         "href": {
           "type": "string",
-          "description": "Configuration for Href."
+          "description": "Bookmark URL."
         },
         "abbr": {
           "type": "string",
-          "description": "Configuration for Abbr.",
+          "description": "Two-letter abbreviation (fallback when no icon is available).",
           "maxLength": 2
         },
         "icon": {
           "type": "string",
-          "description": "Configuration for Icon."
+          "description": "Bookmark icon. Accepts a URL, mdi-NAME, si-NAME, sh-NAME, or a filename."
         },
         "description": {
           "type": "string",
-          "description": "Configuration for Description."
+          "description": "Bookmark description."
         },
         "id": {
           "type": "string",
-          "description": "Configuration for Id."
+          "description": "Custom ID for targeting with custom CSS."
         },
         "target": {
           "type": "string",
-          "description": "Configuration for Target.",
+          "description": "Where to open the link.",
           "enum": [
             "_self",
             "_blank",
