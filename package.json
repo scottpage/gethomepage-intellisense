@@ -41,7 +41,8 @@
     "prepublish": "npm run compile",
     "lint": "oxlint src tests",
     "format": "oxfmt src tests package.json tsconfig.json",
-    "format:check": "oxfmt --check src tests package.json tsconfig.json"
+    "format:check": "oxfmt --check src tests package.json tsconfig.json",
+    "locale:add": "node scripts/add-locale.cjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

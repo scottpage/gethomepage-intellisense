@@ -1,6 +1,12 @@
-export type SupportedLocale = 'en' | 'pt-BR';
+import registry from './locales.json';
+
+export type SupportedLocale = string;
 
 export function resolveLocale(language: string | undefined): SupportedLocale {
-  const locale = (language ?? '').toLowerCase().replace('_', '-');
-  return locale === 'pt' || locale.startsWith('pt-') ? 'pt-BR' : 'en';
+  const normalized = (language ?? '').toLowerCase().replaceAll('_', '-');
+  const exact = registry.locales.find((locale) => locale.toLowerCase() === normalized);
+  if (exact) return exact;
+
+  const primary = normalized.split('-')[0];
+  return registry.locales.find((locale) => locale.toLowerCase().split('-')[0] === primary) ?? registry.default;
 }
