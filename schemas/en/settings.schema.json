@@ -1,0 +1,486 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/settings.schema.json",
+  "title": "GetHomepage Settings",
+  "description": "Configuration for Settings. Documentation: https://gethomepage.dev/configs/settings/",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Configuration for Title.",
+      "default": "Homepage"
+    },
+    "description": {
+      "type": "string",
+      "description": "Configuration for Description."
+    },
+    "startUrl": {
+      "type": "string",
+      "description": "Configuration for Start Url.",
+      "default": "/"
+    },
+    "base": {
+      "type": "string",
+      "description": "Configuration for Base. Documentation: https://homepage.example.com",
+      "format": "uri"
+    },
+    "background": {
+      "description": "Configuration for Background.",
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Configuration for One Of."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "image": {
+              "type": "string",
+              "description": "Configuration for Image."
+            },
+            "blur": {
+              "type": "string",
+              "description": "Configuration for Blur.",
+              "enum": [
+                "none",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "2xl",
+                "3xl"
+              ]
+            },
+            "saturate": {
+              "type": "number",
+              "description": "Configuration for Saturate.",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "brightness": {
+              "type": "number",
+              "description": "Configuration for Brightness.",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "opacity": {
+              "type": "number",
+              "description": "Configuration for Opacity.",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "cardBlur": {
+      "type": "string",
+      "description": "Configuration for Card Blur.",
+      "enum": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl"
+      ]
+    },
+    "favicon": {
+      "type": "string",
+      "description": "Configuration for Favicon."
+    },
+    "theme": {
+      "type": "string",
+      "description": "Configuration for Theme.",
+      "enum": [
+        "dark",
+        "light"
+      ]
+    },
+    "color": {
+      "type": "string",
+      "description": "Configuration for Color.",
+      "enum": [
+        "slate",
+        "gray",
+        "zinc",
+        "neutral",
+        "stone",
+        "amber",
+        "yellow",
+        "lime",
+        "green",
+        "emerald",
+        "teal",
+        "cyan",
+        "sky",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "fuchsia",
+        "pink",
+        "rose",
+        "red",
+        "white"
+      ]
+    },
+    "headerStyle": {
+      "type": "string",
+      "description": "Configuration for Header Style.",
+      "enum": [
+        "underlined",
+        "boxed",
+        "clean",
+        "boxedWidgets"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "description": "Configuration for Language.",
+      "enum": [
+        "af",
+        "ar",
+        "bg",
+        "ca",
+        "cs",
+        "da",
+        "de",
+        "el",
+        "en",
+        "eo",
+        "es",
+        "eu",
+        "fi",
+        "fr",
+        "he",
+        "hi",
+        "hr",
+        "hu",
+        "id",
+        "it",
+        "ja",
+        "ko",
+        "lv",
+        "ms",
+        "nb-NO",
+        "nl",
+        "no",
+        "pl",
+        "pt",
+        "pt-BR",
+        "ro",
+        "ru",
+        "sk",
+        "sl",
+        "sr",
+        "sv",
+        "te",
+        "th",
+        "tr",
+        "uk",
+        "vi",
+        "yue",
+        "zh-Hans",
+        "zh-Hant"
+      ]
+    },
+    "target": {
+      "type": "string",
+      "description": "Configuration for Target.",
+      "enum": [
+        "_self",
+        "_blank",
+        "_top"
+      ]
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "description": "Configuration for Full Width.",
+      "default": false
+    },
+    "maxGroupColumns": {
+      "type": "integer",
+      "description": "Configuration for Max Group Columns.",
+      "minimum": 5,
+      "maximum": 8,
+      "default": 4
+    },
+    "maxBookmarkGroupColumns": {
+      "type": "integer",
+      "description": "Configuration for Max Bookmark Group Columns.",
+      "minimum": 5,
+      "maximum": 8,
+      "default": 6
+    },
+    "disableCollapse": {
+      "type": "boolean",
+      "description": "Configuration for Disable Collapse.",
+      "default": false
+    },
+    "groupsInitiallyCollapsed": {
+      "type": "boolean",
+      "description": "Configuration for Groups Initially Collapsed.",
+      "default": false
+    },
+    "useEqualHeights": {
+      "type": "boolean",
+      "description": "Configuration for Use Equal Heights.",
+      "default": false
+    },
+    "showStats": {
+      "type": "boolean",
+      "description": "Configuration for Show Stats.",
+      "default": false
+    },
+    "statusStyle": {
+      "type": "string",
+      "description": "Configuration for Status Style.",
+      "enum": [
+        "dot",
+        "basic"
+      ]
+    },
+    "disableIndexing": {
+      "type": "boolean",
+      "description": "Configuration for Disable Indexing.",
+      "default": false
+    },
+    "bookmarksStyle": {
+      "type": "string",
+      "description": "Configuration for Bookmarks Style.",
+      "enum": [
+        "icons"
+      ]
+    },
+    "instanceName": {
+      "type": "string",
+      "description": "Configuration for Instance Name."
+    },
+    "blockHighlights": {
+      "type": "object",
+      "description": "Configuration for Block Highlights.",
+      "properties": {
+        "levels": {
+          "type": "object",
+          "properties": {
+            "good": {
+              "type": "string",
+              "description": "Configuration for Good."
+            },
+            "warn": {
+              "type": "string",
+              "description": "Configuration for Warn."
+            },
+            "danger": {
+              "type": "string",
+              "description": "Configuration for Danger."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "quicklaunch": {
+      "type": "object",
+      "description": "Configuration for Quicklaunch.",
+      "properties": {
+        "searchDescriptions": {
+          "type": "boolean",
+          "description": "Configuration for Search Descriptions.",
+          "default": false
+        },
+        "hideInternetSearch": {
+          "type": "boolean",
+          "description": "Configuration for Hide Internet Search.",
+          "default": false
+        },
+        "showSearchSuggestions": {
+          "type": "boolean",
+          "description": "Configuration for Show Search Suggestions.",
+          "default": false
+        },
+        "hideVisitURL": {
+          "type": "boolean",
+          "description": "Configuration for Hide Visit URL.",
+          "default": false
+        },
+        "provider": {
+          "type": "string",
+          "description": "Configuration for Provider.",
+          "enum": [
+            "google",
+            "duckduckgo",
+            "bing",
+            "baidu",
+            "brave"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "description": "Configuration for Url."
+        }
+      },
+      "additionalProperties": false
+    },
+    "providers": {
+      "type": "object",
+      "description": "Configuration for Providers.",
+      "properties": {
+        "openweathermap": {
+          "type": "string",
+          "description": "Configuration for Openweathermap."
+        },
+        "weatherapi": {
+          "type": "string",
+          "description": "Configuration for Weatherapi."
+        },
+        "finnhub": {
+          "type": "string",
+          "description": "Configuration for Finnhub."
+        },
+        "longhorn": {
+          "type": "object",
+          "description": "Configuration for Longhorn.",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Configuration for Url."
+            },
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "pwa": {
+      "type": "object",
+      "description": "Configuration for Pwa.",
+      "properties": {
+        "icons": {
+          "type": "array",
+          "description": "Configuration for Icons.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "description": "Configuration for Src."
+              },
+              "type": {
+                "type": "string",
+                "description": "Configuration for Type.",
+                "default": "image/png"
+              },
+              "sizes": {
+                "type": "string",
+                "description": "Configuration for Sizes."
+              }
+            },
+            "required": [
+              "src"
+            ]
+          }
+        },
+        "shortcuts": {
+          "type": "array",
+          "description": "Configuration for Shortcuts.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Configuration for Name."
+              },
+              "url": {
+                "type": "string",
+                "description": "Configuration for Url."
+              }
+            },
+            "required": [
+              "name",
+              "url"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "description": "Configuration for Layout.",
+      "additionalProperties": {
+        "$ref": "#/definitions/layoutGroup"
+      }
+    }
+  },
+  "definitions": {
+    "layoutGroup": {
+      "type": "object",
+      "description": "Configuration for Layout Group.",
+      "properties": {
+        "style": {
+          "type": "string",
+          "description": "Configuration for Style.",
+          "enum": [
+            "column",
+            "row"
+          ]
+        },
+        "columns": {
+          "type": "integer",
+          "description": "Configuration for Columns.",
+          "minimum": 1,
+          "maximum": 8
+        },
+        "header": {
+          "type": "boolean",
+          "description": "Configuration for Header.",
+          "default": true
+        },
+        "icon": {
+          "type": "string",
+          "description": "Configuration for Icon."
+        },
+        "tab": {
+          "type": "string",
+          "description": "Configuration for Tab."
+        },
+        "initiallyCollapsed": {
+          "type": "boolean",
+          "description": "Configuration for Initially Collapsed.",
+          "default": false
+        },
+        "disableCollapse": {
+          "type": "boolean",
+          "description": "Configuration for Disable Collapse.",
+          "default": false
+        },
+        "useEqualHeights": {
+          "type": "boolean",
+          "description": "Configuration for Use Equal Heights.",
+          "default": false
+        },
+        "iconsOnly": {
+          "type": "boolean",
+          "description": "Configuration for Icons Only.",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,811 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/widgets.schema.json",
+  "title": "GetHomepage Info Widgets",
+  "description": "Configuration for Widgets. Documentation: https://gethomepage.dev/configs/info-widgets/",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/greetingWidget"
+      },
+      {
+        "$ref": "#/definitions/datetimeWidget"
+      },
+      {
+        "$ref": "#/definitions/searchWidget"
+      },
+      {
+        "$ref": "#/definitions/resourcesWidget"
+      },
+      {
+        "$ref": "#/definitions/openweathermapWidget"
+      },
+      {
+        "$ref": "#/definitions/openmeteoWidget"
+      },
+      {
+        "$ref": "#/definitions/glancesWidget"
+      },
+      {
+        "$ref": "#/definitions/logoWidget"
+      },
+      {
+        "$ref": "#/definitions/stocksWidget"
+      },
+      {
+        "$ref": "#/definitions/kubernetesWidget"
+      },
+      {
+        "$ref": "#/definitions/longhornWidget"
+      },
+      {
+        "$ref": "#/definitions/unifiConsoleWidget"
+      }
+    ]
+  },
+  "definitions": {
+    "textSize": {
+      "type": "string",
+      "description": "Configuration for Text Size.",
+      "enum": [
+        "4xl",
+        "3xl",
+        "2xl",
+        "xl",
+        "md",
+        "sm",
+        "xs"
+      ]
+    },
+    "greetingWidget": {
+      "type": "object",
+      "required": [
+        "greeting"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "greeting": {
+          "type": "object",
+          "description": "Configuration for Greeting.",
+          "properties": {
+            "text_size": {
+              "$ref": "#/definitions/textSize"
+            },
+            "text": {
+              "type": "string",
+              "description": "Configuration for Text."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "datetimeWidget": {
+      "type": "object",
+      "required": [
+        "datetime"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "datetime": {
+          "type": "object",
+          "description": "Configuration for Datetime.",
+          "properties": {
+            "text_size": {
+              "$ref": "#/definitions/textSize"
+            },
+            "locale": {
+              "type": "string",
+              "description": "Configuration for Locale."
+            },
+            "format": {
+              "type": "object",
+              "description": "Configuration for Format.",
+              "properties": {
+                "dateStyle": {
+                  "type": "string",
+                  "description": "Configuration for Date Style.",
+                  "enum": [
+                    "full",
+                    "long",
+                    "medium",
+                    "short"
+                  ]
+                },
+                "timeStyle": {
+                  "type": "string",
+                  "description": "Configuration for Time Style.",
+                  "enum": [
+                    "full",
+                    "long",
+                    "medium",
+                    "short"
+                  ]
+                },
+                "hour12": {
+                  "type": "boolean",
+                  "description": "Configuration for Hour12."
+                },
+                "hour": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit"
+                  ]
+                },
+                "minute": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit"
+                  ]
+                },
+                "second": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit"
+                  ]
+                },
+                "weekday": {
+                  "type": "string",
+                  "enum": [
+                    "long",
+                    "short",
+                    "narrow"
+                  ]
+                },
+                "year": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit"
+                  ]
+                },
+                "month": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit",
+                    "long",
+                    "short",
+                    "narrow"
+                  ]
+                },
+                "day": {
+                  "type": "string",
+                  "enum": [
+                    "numeric",
+                    "2-digit"
+                  ]
+                },
+                "timeZoneName": {
+                  "type": "string",
+                  "enum": [
+                    "long",
+                    "short",
+                    "shortOffset",
+                    "longOffset",
+                    "shortGeneric",
+                    "longGeneric"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "searchWidget": {
+      "type": "object",
+      "required": [
+        "search"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "search": {
+          "type": "object",
+          "description": "Configuration for Search.",
+          "properties": {
+            "provider": {
+              "description": "Configuration for Provider.",
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "google",
+                    "duckduckgo",
+                    "bing",
+                    "baidu",
+                    "brave",
+                    "custom"
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "google",
+                      "duckduckgo",
+                      "bing",
+                      "baidu",
+                      "brave",
+                      "custom"
+                    ]
+                  }
+                }
+              ]
+            },
+            "focus": {
+              "type": "boolean",
+              "description": "Configuration for Focus.",
+              "default": true
+            },
+            "showSearchSuggestions": {
+              "type": "boolean",
+              "description": "Configuration for Show Search Suggestions.",
+              "default": false
+            },
+            "target": {
+              "type": "string",
+              "description": "Configuration for Target.",
+              "enum": [
+                "_self",
+                "_blank",
+                "_top"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "Configuration for Url."
+            },
+            "suggestionUrl": {
+              "type": "string",
+              "description": "Configuration for Suggestion Url."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "resourcesWidget": {
+      "type": "object",
+      "required": [
+        "resources"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "resources": {
+          "type": "object",
+          "description": "Configuration for Resources.",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Configuration for Label."
+            },
+            "cpu": {
+              "type": "boolean",
+              "description": "Configuration for Cpu."
+            },
+            "memory": {
+              "type": "boolean",
+              "description": "Configuration for Memory."
+            },
+            "disk": {
+              "description": "Configuration for Disk.",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "cputemp": {
+              "type": "boolean",
+              "description": "Configuration for Cputemp."
+            },
+            "tempmin": {
+              "type": "number",
+              "description": "Configuration for Tempmin."
+            },
+            "tempmax": {
+              "type": "number",
+              "description": "Configuration for Tempmax."
+            },
+            "uptime": {
+              "type": "boolean",
+              "description": "Configuration for Uptime."
+            },
+            "units": {
+              "type": "string",
+              "description": "Configuration for Units.",
+              "enum": [
+                "metric",
+                "imperial"
+              ]
+            },
+            "diskUnits": {
+              "type": "string",
+              "description": "Configuration for Disk Units.",
+              "enum": [
+                "bytes",
+                "bbytes"
+              ]
+            },
+            "refresh": {
+              "type": "integer",
+              "description": "Configuration for Refresh.",
+              "default": 3000
+            },
+            "network": {
+              "description": "Configuration for Network.",
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "expanded": {
+              "type": "boolean",
+              "description": "Configuration for Expanded.",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "openweathermapWidget": {
+      "type": "object",
+      "required": [
+        "openweathermap"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "openweathermap": {
+          "type": "object",
+          "description": "Configuration for Openweathermap.",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Configuration for Label."
+            },
+            "latitude": {
+              "type": "number",
+              "description": "Configuration for Latitude.",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "description": "Configuration for Longitude.",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "units": {
+              "type": "string",
+              "description": "Configuration for Units.",
+              "enum": [
+                "metric",
+                "imperial"
+              ]
+            },
+            "provider": {
+              "type": "string",
+              "description": "Configuration for Provider.",
+              "const": "openweathermap"
+            },
+            "apiKey": {
+              "type": "string",
+              "description": "Configuration for Api Key."
+            },
+            "cache": {
+              "type": "integer",
+              "description": "Configuration for Cache.",
+              "default": 5
+            },
+            "format": {
+              "type": "object",
+              "description": "Configuration for Format.",
+              "properties": {
+                "maximumFractionDigits": {
+                  "type": "integer",
+                  "description": "Configuration for Maximum Fraction Digits."
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "openmeteoWidget": {
+      "type": "object",
+      "required": [
+        "openmeteo"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "openmeteo": {
+          "type": "object",
+          "description": "Configuration for Openmeteo.",
+          "properties": {
+            "label": {
+              "type": "string",
+              "description": "Configuration for Label."
+            },
+            "latitude": {
+              "type": "number",
+              "description": "Configuration for Latitude.",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "description": "Configuration for Longitude.",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "timezone": {
+              "type": "string",
+              "description": "Configuration for Timezone."
+            },
+            "units": {
+              "type": "string",
+              "description": "Configuration for Units.",
+              "enum": [
+                "metric",
+                "imperial"
+              ]
+            },
+            "cache": {
+              "type": "integer",
+              "description": "Configuration for Cache.",
+              "default": 5
+            },
+            "format": {
+              "type": "object",
+              "description": "Configuration for Format.",
+              "properties": {
+                "maximumFractionDigits": {
+                  "type": "integer",
+                  "description": "Configuration for Maximum Fraction Digits."
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "glancesWidget": {
+      "type": "object",
+      "required": [
+        "glances"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "glances": {
+          "type": "object",
+          "description": "Configuration for Glances.",
+          "required": [
+            "url"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Configuration for Url."
+            },
+            "username": {
+              "type": "string",
+              "description": "Configuration for Username."
+            },
+            "password": {
+              "type": "string",
+              "description": "Configuration for Password."
+            },
+            "version": {
+              "type": "integer",
+              "description": "Configuration for Version.",
+              "enum": [
+                3,
+                4
+              ],
+              "default": 3
+            },
+            "cpu": {
+              "type": "boolean",
+              "description": "Configuration for Cpu.",
+              "default": true
+            },
+            "mem": {
+              "type": "boolean",
+              "description": "Configuration for Mem.",
+              "default": true
+            },
+            "cputemp": {
+              "type": "boolean",
+              "description": "Configuration for Cputemp.",
+              "default": false
+            },
+            "uptime": {
+              "type": "boolean",
+              "description": "Configuration for Uptime.",
+              "default": false
+            },
+            "disk": {
+              "description": "Configuration for Disk.",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "diskUnits": {
+              "type": "string",
+              "description": "Configuration for Disk Units.",
+              "enum": [
+                "bytes",
+                "bbytes"
+              ],
+              "default": "bytes"
+            },
+            "expanded": {
+              "type": "boolean",
+              "description": "Configuration for Expanded.",
+              "default": false
+            },
+            "label": {
+              "type": "string",
+              "description": "Configuration for Label."
+            },
+            "unit": {
+              "type": "string",
+              "description": "Configuration for Unit.",
+              "enum": [
+                "metric",
+                "imperial"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "logoWidget": {
+      "type": "object",
+      "required": [
+        "logo"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "logo": {
+          "type": "object",
+          "description": "Configuration for Logo.",
+          "properties": {
+            "icon": {
+              "type": "string",
+              "description": "Configuration for Icon."
+            },
+            "href": {
+              "type": "string",
+              "description": "Configuration for Href."
+            },
+            "target": {
+              "type": "string",
+              "description": "Configuration for Target.",
+              "enum": [
+                "_self",
+                "_blank",
+                "_top"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "stocksWidget": {
+      "type": "object",
+      "required": [
+        "stocks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "stocks": {
+          "type": "object",
+          "description": "Configuration for Stocks.",
+          "properties": {
+            "provider": {
+              "type": "string",
+              "description": "Configuration for Provider.",
+              "const": "finnhub"
+            },
+            "color": {
+              "type": "boolean",
+              "description": "Configuration for Color.",
+              "default": true
+            },
+            "cache": {
+              "type": "integer",
+              "description": "Configuration for Cache.",
+              "default": 1
+            },
+            "watchlist": {
+              "type": "array",
+              "description": "Configuration for Watchlist.",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 8
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "kubernetesWidget": {
+      "type": "object",
+      "required": [
+        "kubernetes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kubernetes": {
+          "type": "object",
+          "description": "Configuration for Kubernetes.",
+          "properties": {
+            "cluster": {
+              "type": "object",
+              "properties": {
+                "show": {
+                  "type": "boolean",
+                  "description": "Configuration for Show."
+                },
+                "cpu": {
+                  "type": "boolean",
+                  "description": "Configuration for Cpu."
+                },
+                "memory": {
+                  "type": "boolean",
+                  "description": "Configuration for Memory."
+                },
+                "showLabel": {
+                  "type": "boolean",
+                  "description": "Configuration for Show Label."
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Configuration for Label."
+                }
+              },
+              "additionalProperties": false
+            },
+            "nodes": {
+              "type": "object",
+              "properties": {
+                "show": {
+                  "type": "boolean",
+                  "description": "Configuration for Show."
+                },
+                "cpu": {
+                  "type": "boolean",
+                  "description": "Configuration for Cpu."
+                },
+                "memory": {
+                  "type": "boolean",
+                  "description": "Configuration for Memory."
+                },
+                "showLabel": {
+                  "type": "boolean",
+                  "description": "Configuration for Show Label."
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "longhornWidget": {
+      "type": "object",
+      "required": [
+        "longhorn"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "longhorn": {
+          "type": "object",
+          "description": "Configuration for Longhorn.",
+          "properties": {
+            "expanded": {
+              "type": "boolean",
+              "description": "Configuration for Expanded.",
+              "default": true
+            },
+            "total": {
+              "type": "boolean",
+              "description": "Configuration for Total."
+            },
+            "labels": {
+              "type": "boolean",
+              "description": "Configuration for Labels."
+            },
+            "nodes": {
+              "type": "boolean",
+              "description": "Configuration for Nodes."
+            },
+            "include": {
+              "type": "array",
+              "description": "Configuration for Include.",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "unifiConsoleWidget": {
+      "type": "object",
+      "required": [
+        "unifi_console"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unifi_console": {
+          "type": "object",
+          "description": "Configuration for Unifi console.",
+          "required": [
+            "url"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "Configuration for Url."
+            },
+            "username": {
+              "type": "string",
+              "description": "Configuration for Username."
+            },
+            "password": {
+              "type": "string",
+              "description": "Configuration for Password."
+            },
+            "key": {
+              "type": "string",
+              "description": "Configuration for Key."
+            },
+            "site": {
+              "type": "string",
+              "description": "Configuration for Site."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+}

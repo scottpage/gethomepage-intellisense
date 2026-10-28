@@ -1,0 +1,725 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/services.schema.json",
+  "title": "GetHomepage Services",
+  "description": "Configuration for Services. Documentation: https://gethomepage.dev/configs/services/",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/serviceGroup"
+  },
+  "definitions": {
+    "serviceGroup": {
+      "type": "object",
+      "description": "Configuration for Service Group.",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/serviceEntry"
+            },
+            {
+              "$ref": "#/definitions/nestedServiceGroup"
+            }
+          ]
+        }
+      }
+    },
+    "nestedServiceGroup": {
+      "type": "object",
+      "description": "Configuration for Nested Service Group.",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/serviceEntry"
+        }
+      }
+    },
+    "serviceEntry": {
+      "type": "object",
+      "description": "Configuration for Service Entry.",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/definitions/serviceProperties"
+      }
+    },
+    "serviceProperties": {
+      "type": "object",
+      "description": "Configuration for Service Properties.",
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Configuration for Href."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Configuration for Icon."
+        },
+        "description": {
+          "type": "string",
+          "description": "Configuration for Description."
+        },
+        "id": {
+          "type": "string",
+          "description": "Configuration for Id."
+        },
+        "target": {
+          "type": "string",
+          "description": "Configuration for Target.",
+          "enum": [
+            "_self",
+            "_blank",
+            "_top"
+          ]
+        },
+        "siteMonitor": {
+          "type": "string",
+          "description": "Configuration for Site Monitor."
+        },
+        "statusStyle": {
+          "type": "string",
+          "description": "Configuration for Status Style.",
+          "enum": [
+            "dot",
+            "basic"
+          ]
+        },
+        "server": {
+          "type": "string",
+          "description": "Configuration for Server."
+        },
+        "container": {
+          "type": "string",
+          "description": "Configuration for Container."
+        },
+        "showStats": {
+          "type": "boolean",
+          "description": "Configuration for Show Stats."
+        },
+        "namespace": {
+          "type": "string",
+          "description": "Configuration for Namespace."
+        },
+        "app": {
+          "type": "string",
+          "description": "Configuration for App."
+        },
+        "podSelector": {
+          "type": "string",
+          "description": "Configuration for Pod Selector."
+        },
+        "proxmoxNode": {
+          "type": "string",
+          "description": "Configuration for Proxmox Node."
+        },
+        "proxmoxVMID": {
+          "type": "integer",
+          "description": "Configuration for Proxmox VMID."
+        },
+        "proxmoxType": {
+          "type": "string",
+          "description": "Configuration for Proxmox Type.",
+          "enum": [
+            "qemu",
+            "lxc"
+          ],
+          "default": "qemu"
+        },
+        "ping": {
+          "type": "string",
+          "description": "Configuration for Ping.",
+          "deprecated": true
+        },
+        "widget": {
+          "$ref": "#/definitions/widget",
+          "description": "Configuration for Widget."
+        },
+        "widgets": {
+          "type": "array",
+          "description": "Configuration for Widgets.",
+          "items": {
+            "$ref": "#/definitions/widget"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "widget": {
+      "type": "object",
+      "description": "Configuration for Widget.",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Configuration for Type. Documentation: https://gethomepage.dev/widgets/",
+          "enum": [
+            "adguard",
+            "apcups",
+            "arcane",
+            "argocd",
+            "atsumeru",
+            "audiobookshelf",
+            "authentik",
+            "autobrr",
+            "azuredevops",
+            "backrest",
+            "bazarr",
+            "beszel",
+            "booklore",
+            "caddy",
+            "calendar",
+            "calibreweb",
+            "changedetectionio",
+            "channelsdvrserver",
+            "checkmk",
+            "cloudflared",
+            "coinmarketcap",
+            "crowdsec",
+            "customapi",
+            "deluge",
+            "develancacheui",
+            "diskstation",
+            "dispatcharr",
+            "dockhand",
+            "downloadstation",
+            "emby",
+            "esphome",
+            "evcc",
+            "filebrowser",
+            "fileflows",
+            "firefly",
+            "flood",
+            "freshrss",
+            "frigate",
+            "fritzbox",
+            "gamedig",
+            "gatus",
+            "ghostfolio",
+            "gitea",
+            "gitlab",
+            "glances",
+            "gluetun",
+            "gotify",
+            "grafana",
+            "hdhomerun",
+            "headscale",
+            "healthchecks",
+            "homeassistant",
+            "homebox",
+            "homebridge",
+            "immich",
+            "jackett",
+            "jdownloader",
+            "jellyfin",
+            "jellystat",
+            "karakeep",
+            "kavita",
+            "komga",
+            "komodo",
+            "kopia",
+            "kubernetes",
+            "lidarr",
+            "linkwarden",
+            "lubelogger",
+            "mailcow",
+            "mastodon",
+            "mealie",
+            "medusa",
+            "mikrotik",
+            "minecraft",
+            "miniflux",
+            "mjpeg",
+            "moonraker",
+            "mylar",
+            "myspeed",
+            "navidrome",
+            "netalertx",
+            "netdata",
+            "nextcloud",
+            "nextdns",
+            "npm",
+            "nzbget",
+            "octoprint",
+            "omada",
+            "ombi",
+            "opendtu",
+            "openmediavault",
+            "openwrt",
+            "opnsense",
+            "overseerr",
+            "pangolin",
+            "paperlessngx",
+            "peanut",
+            "pfsense",
+            "photoprism",
+            "pihole",
+            "plantit",
+            "plex",
+            "portainer",
+            "prometheus",
+            "prometheusmetric",
+            "prowlarr",
+            "proxmox",
+            "proxmoxbackupserver",
+            "pterodactyl",
+            "pyload",
+            "qbittorrent",
+            "qnap",
+            "radarr",
+            "readarr",
+            "romm",
+            "rutorrent",
+            "sabnzbd",
+            "scrutiny",
+            "seerr",
+            "slskd",
+            "sonarr",
+            "speedtest",
+            "spoolman",
+            "stash",
+            "stocks",
+            "strelaysrv",
+            "suwayomi",
+            "swagdashboard",
+            "tailscale",
+            "tandoor",
+            "tautulli",
+            "tdarr",
+            "technitium",
+            "tracearr",
+            "traefik",
+            "transmission",
+            "trilium",
+            "truenas",
+            "tubearchivist",
+            "unifi",
+            "unmanic",
+            "unraid",
+            "uptimekuma",
+            "uptimerobot",
+            "urbackup",
+            "vikunja",
+            "wallos",
+            "watchtower",
+            "wgeasy",
+            "whatsupdocker",
+            "xteve",
+            "yourspotify",
+            "zabbix",
+            "iframe"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "description": "Configuration for Url."
+        },
+        "key": {
+          "type": "string",
+          "description": "Configuration for Key."
+        },
+        "password": {
+          "type": "string",
+          "description": "Configuration for Password."
+        },
+        "username": {
+          "type": "string",
+          "description": "Configuration for Username."
+        },
+        "headers": {
+          "type": "object",
+          "description": "Configuration for Headers.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": "array",
+          "description": "Configuration for Fields.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "env": {
+          "type": [
+            "integer",
+            "string"
+          ],
+          "description": "Configuration for Env."
+        },
+        "node": {
+          "type": "string",
+          "description": "Configuration for Node."
+        },
+        "slug": {
+          "type": "string",
+          "description": "Configuration for Slug."
+        },
+        "site": {
+          "type": "string",
+          "description": "Configuration for Site."
+        },
+        "version": {
+          "type": "integer",
+          "description": "Configuration for Version."
+        },
+        "enableQueue": {
+          "type": "boolean",
+          "description": "Configuration for Enable Queue."
+        },
+        "enableBlocks": {
+          "type": "boolean",
+          "description": "Configuration for Enable Blocks.",
+          "default": false
+        },
+        "enableNowPlaying": {
+          "type": "boolean",
+          "description": "Configuration for Enable Now Playing.",
+          "default": true
+        },
+        "enableUser": {
+          "type": "boolean",
+          "description": "Configuration for Enable User.",
+          "default": false
+        },
+        "enableMediaControl": {
+          "type": "boolean",
+          "description": "Configuration for Enable Media Control.",
+          "default": true
+        },
+        "showEpisodeNumber": {
+          "type": "boolean",
+          "description": "Configuration for Show Episode Number.",
+          "default": false
+        },
+        "expandOneStreamToTwoRows": {
+          "type": "boolean",
+          "description": "Configuration for Expand One Stream To Two Rows.",
+          "default": true
+        },
+        "enableRecentEvents": {
+          "type": "boolean",
+          "description": "Configuration for Enable Recent Events.",
+          "default": false
+        },
+        "alerts": {
+          "type": "string",
+          "description": "Configuration for Alerts.",
+          "enum": [
+            "grafana",
+            "alertmanager"
+          ]
+        },
+        "environment": {
+          "type": "string",
+          "description": "Configuration for Environment."
+        },
+        "custom": {
+          "type": "array",
+          "description": "Configuration for Custom.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "type": "string",
+                "description": "Configuration for State."
+              },
+              "template": {
+                "type": "string",
+                "description": "Configuration for Template."
+              },
+              "label": {
+                "type": "string",
+                "description": "Configuration for Label."
+              },
+              "value": {
+                "type": "string",
+                "description": "Configuration for Value."
+              }
+            }
+          }
+        },
+        "refreshInterval": {
+          "type": "integer",
+          "description": "Configuration for Refresh Interval.",
+          "default": 10000
+        },
+        "method": {
+          "type": "string",
+          "description": "Configuration for Method.",
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ],
+          "default": "GET"
+        },
+        "requestBody": {
+          "description": "Configuration for Request Body.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "display": {
+          "type": "string",
+          "description": "Configuration for Display.",
+          "enum": [
+            "block",
+            "list",
+            "dynamic-list"
+          ]
+        },
+        "mappings": {
+          "type": "array",
+          "description": "Configuration for Mappings.",
+          "items": {
+            "$ref": "#/definitions/customApiMapping"
+          }
+        },
+        "src": {
+          "type": "string",
+          "description": "Configuration for Src."
+        },
+        "classes": {
+          "type": "string",
+          "description": "Configuration for Classes."
+        },
+        "referrerPolicy": {
+          "type": "string",
+          "description": "Configuration for Referrer Policy."
+        },
+        "allowPolicy": {
+          "type": "string",
+          "description": "Configuration for Allow Policy."
+        },
+        "allowFullscreen": {
+          "type": "boolean",
+          "description": "Configuration for Allow Fullscreen.",
+          "default": true
+        },
+        "loadingStrategy": {
+          "type": "string",
+          "description": "Configuration for Loading Strategy.",
+          "enum": [
+            "eager",
+            "lazy"
+          ]
+        },
+        "allowScrolling": {
+          "type": "string",
+          "description": "Configuration for Allow Scrolling.",
+          "enum": [
+            "yes",
+            "no"
+          ]
+        },
+        "highlight": {
+          "$ref": "#/definitions/highlight",
+          "description": "Configuration for Highlight."
+        }
+      },
+      "additionalProperties": true
+    },
+    "customApiMapping": {
+      "type": "object",
+      "description": "Configuration for Custom Api Mapping.",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Configuration for Field."
+        },
+        "label": {
+          "type": "string",
+          "description": "Configuration for Label."
+        },
+        "format": {
+          "type": "string",
+          "description": "Configuration for Format.",
+          "enum": [
+            "text",
+            "number",
+            "float",
+            "percent",
+            "duration",
+            "bytes",
+            "bitrate",
+            "size",
+            "date",
+            "relativeDate"
+          ]
+        },
+        "remap": {
+          "type": "array",
+          "description": "Configuration for Remap.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {},
+              "to": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "scale": {
+          "type": "number",
+          "description": "Configuration for Scale."
+        },
+        "prefix": {
+          "type": "string",
+          "description": "Configuration for Prefix."
+        },
+        "suffix": {
+          "type": "string",
+          "description": "Configuration for Suffix."
+        },
+        "additionalField": {
+          "type": "object",
+          "description": "Configuration for Additional Field.",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "format": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "highlight": {
+      "type": "object",
+      "description": "Configuration for Highlight.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "numeric": {
+            "type": "array",
+            "description": "Configuration for Numeric.",
+            "items": {
+              "$ref": "#/definitions/highlightNumericRule"
+            }
+          },
+          "string": {
+            "type": "array",
+            "description": "Configuration for String.",
+            "items": {
+              "$ref": "#/definitions/highlightStringRule"
+            }
+          },
+          "valueOnly": {
+            "type": "boolean",
+            "description": "Configuration for Value Only.",
+            "default": false
+          }
+        }
+      }
+    },
+    "highlightNumericRule": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "Configuration for Level.",
+          "enum": [
+            "good",
+            "warn",
+            "danger"
+          ]
+        },
+        "when": {
+          "type": "string",
+          "description": "Configuration for When.",
+          "enum": [
+            "gt",
+            "gte",
+            "lt",
+            "lte",
+            "eq",
+            "ne",
+            "between",
+            "outside"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "description": "Configuration for Value."
+        },
+        "negate": {
+          "type": "boolean",
+          "description": "Configuration for Negate.",
+          "default": false
+        }
+      },
+      "required": [
+        "level",
+        "when",
+        "value"
+      ]
+    },
+    "highlightStringRule": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "Configuration for Level.",
+          "enum": [
+            "good",
+            "warn",
+            "danger"
+          ]
+        },
+        "when": {
+          "type": "string",
+          "description": "Configuration for When.",
+          "enum": [
+            "equals",
+            "includes",
+            "startsWith",
+            "endsWith",
+            "regex"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "description": "Configuration for Value."
+        },
+        "negate": {
+          "type": "boolean",
+          "description": "Configuration for Negate.",
+          "default": false
+        },
+        "caseSensitive": {
+          "type": "boolean",
+          "description": "Configuration for Case Sensitive.",
+          "default": false
+        },
+        "flags": {
+          "type": "string",
+          "description": "Configuration for Flags."
+        }
+      },
+      "required": [
+        "level",
+        "when",
+        "value"
+      ]
+    }
+  }
+}

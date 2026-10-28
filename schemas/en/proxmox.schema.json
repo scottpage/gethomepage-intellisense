@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/proxmox.schema.json",
+  "title": "GetHomepage Proxmox Configuration",
+  "description": "Configuration for Proxmox. Documentation: https://gethomepage.dev/configs/proxmox/",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/proxmoxNode"
+  },
+  "definitions": {
+    "proxmoxNode": {
+      "type": "object",
+      "description": "Configuration for Proxmox Node.",
+      "required": [
+        "url",
+        "token",
+        "secret"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "Configuration for Url. Documentation: https://proxmox.local:8006"
+        },
+        "token": {
+          "type": "string",
+          "description": "Configuration for Token."
+        },
+        "secret": {
+          "type": "string",
+          "description": "Configuration for Secret."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/bookmarks.schema.json",
+  "title": "GetHomepage Bookmarks",
+  "description": "Configuration for Bookmarks. Documentation: https://gethomepage.dev/configs/bookmarks/",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/bookmarkGroup"
+  },
+  "definitions": {
+    "bookmarkGroup": {
+      "type": "object",
+      "description": "Configuration for Bookmark Group.",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/bookmarkEntry"
+        }
+      }
+    },
+    "bookmarkEntry": {
+      "type": "object",
+      "description": "Configuration for Bookmark Entry.",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/bookmarkProperties"
+        },
+        "minItems": 1,
+        "maxItems": 1
+      }
+    },
+    "bookmarkProperties": {
+      "type": "object",
+      "description": "Configuration for Bookmark Properties.",
+      "required": [
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "Configuration for Href."
+        },
+        "abbr": {
+          "type": "string",
+          "description": "Configuration for Abbr.",
+          "maxLength": 2
+        },
+        "icon": {
+          "type": "string",
+          "description": "Configuration for Icon."
+        },
+        "description": {
+          "type": "string",
+          "description": "Configuration for Description."
+        },
+        "id": {
+          "type": "string",
+          "description": "Configuration for Id."
+        },
+        "target": {
+          "type": "string",
+          "description": "Configuration for Target.",
+          "enum": [
+            "_self",
+            "_blank",
+            "_top"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

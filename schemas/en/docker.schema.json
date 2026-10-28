@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gethomepage.dev/schemas/docker.schema.json",
+  "title": "GetHomepage Docker Configuration",
+  "description": "Configuration for Docker. Documentation: https://gethomepage.dev/configs/docker/",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/definitions/dockerServer"
+  },
+  "definitions": {
+    "dockerServer": {
+      "type": "object",
+      "description": "Configuration for Docker Server.",
+      "properties": {
+        "host": {
+          "type": "string",
+          "description": "Configuration for Host."
+        },
+        "port": {
+          "type": "integer",
+          "description": "Configuration for Port.",
+          "default": 2375
+        },
+        "socket": {
+          "type": "string",
+          "description": "Configuration for Socket."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Configuration for Protocol.",
+          "enum": [
+            "http",
+            "https"
+          ],
+          "default": "http"
+        },
+        "swarm": {
+          "type": "boolean",
+          "description": "Configuration for Swarm.",
+          "default": false
+        },
+        "tls": {
+          "type": "object",
+          "description": "Configuration for Tls.",
+          "properties": {
+            "keyFile": {
+              "type": "string",
+              "description": "Configuration for Key File."
+            },
+            "certFile": {
+              "type": "string",
+              "description": "Configuration for Cert File."
+            },
+            "caFile": {
+              "type": "string",
+              "description": "Configuration for Ca File."
+            }
+          },
+          "additionalProperties": false
+        },
+        "headers": {
+          "type": "object",
+          "description": "Configuration for Headers.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "instanceName": {
+          "type": "string",
+          "description": "Configuration for Instance Name."
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "socket"
+          ]
+        },
+        {
+          "required": [
+            "host"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}
