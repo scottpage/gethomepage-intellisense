@@ -17,11 +17,11 @@
 - [x] Record Homepage compatibility references and limitations in `docs/homepage-compatibility.md`.
 - [x] Open upstream draft PR #5 and push translation/compatibility updates.
 
-## Before marking the PR ready for review
+## PR readiness and follow-up
 
-- [ ] Confirm the new GitHub Actions workflow passes on the remote PR branch after pushing.
-- [ ] Review the final diff and packaged VSIX contents.
-- [ ] Resolve any upstream maintainer feedback.
+- [x] Confirm GitHub Actions passes on the feature branch, uploads the VSIX artifact, and reports no deprecation warnings (verified by contributor).
+- [x] Review the packaged VSIX and confirm extension behavior works as expected (verified by contributor).
+- [ ] Address upstream maintainer feedback if requested (ongoing after review begins).
 
 ## Community-maintained follow-up (not PR blockers)
 
