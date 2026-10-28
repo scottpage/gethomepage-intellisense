@@ -19,7 +19,7 @@ The offline command copies all seven schemas to `schemas/<locale>/`, copies `sni
 
 Our original automated translation script (`translate-locales.cjs`) called an unofficial Google Translate endpoint. The service responded with HTTP 429 rate-limit errors, preventing reliable bulk translation. We did **not** switch to a different translation API: the English schema descriptions were subsequently translated directly with AI assistance and checked against the Portuguese source, without making external translation API requests.
 
-The seven English schema files now have translated descriptions. English snippet text has also been translated, with Portuguese prefix aliases preserved for compatibility. In-editor language review remains outstanding. Future contributors may translate manually, use AI assistance, or use a translation service of their choice; translations should be reviewed for technical accuracy.
+The seven English schema files now have translated descriptions. English snippet text has also been translated, with Portuguese prefix aliases preserved for compatibility. English and Portuguese were smoke-tested successfully in the Extension Development Host. Individual widget translations will be improved through community use. Future contributors may translate manually, use AI assistance, or use a translation service of their choice; translations should be reviewed for technical accuracy.
 
 ## Why languages are community-contributed
 
@@ -32,7 +32,7 @@ The `locale:add` command handles the mechanical setup offline. Developers can co
 - Translate snippet names, descriptions, and appropriate placeholder defaults.
 - Preserve property keys, enum values, YAML syntax, snippet tab-stop syntax, paths, URLs, and service/widget identifiers.
 - Keep useful existing snippet prefix aliases and add translated ones where appropriate.
-- Review translations manually. **English content is currently incomplete** and is not an authoritative translation source.
+- Review translations manually. Use the English schema as a starting point, but verify technical terminology against Homepage documentation and correct inaccuracies as they are discovered.
 
 ## Test
 ```sh

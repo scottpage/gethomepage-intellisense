@@ -1,29 +1,35 @@
 # Roadmap and upstream PR checklist
 
 ## Completed
-- TypeScript migration and source maps.
-- Locale-aware schema registration and snippets for English and Portuguese.
-- VS Code activation fix, debugger launch, and build task.
-- Oxfmt/Oxlint and workspace extension recommendations.
-- Offline locale scaffolding and developer documentation.
 
-## Translation progress
+- [x] Migrate the runtime to TypeScript with source maps.
+- [x] Register localized schemas and snippets for English and Brazilian Portuguese.
+- [x] Translate all seven English schemas and all 24 English snippets.
+- [x] Preserve existing Portuguese snippet aliases.
+- [x] Fix redundant VS Code activation event and configure debugger/build task.
+- [x] Verify both English and Portuguese in the Extension Development Host (manual smoke test by contributor).
+- [x] Confirm language-specific hover and completion behavior in the development host.
+- [x] Add Oxfmt, Oxlint, TypeScript checks, and automated locale/schema parity tests.
+- [x] Add automated checks for schema/snippet integrity, documented widget properties, and hover text on top-level settings and service widget properties.
+- [x] Add GitHub Actions CI for type checking, lint, formatting, tests, and VSIX packaging.
+- [x] Provide offline locale scaffolding and contributor/developer documentation.
+- [x] Audit core Homepage configuration documentation and add missing settings/widget options in both locales.
+- [x] Record Homepage compatibility references and limitations in `docs/homepage-compatibility.md`.
+- [x] Open upstream draft PR #5 and push translation/compatibility updates.
 
-- All seven English schemas have translated descriptions (282 description fields in total).
-- The initial four smaller schemas were committed separately as `b52dae7`.
-- Translation moved away from the unofficial Google Translate endpoint after HTTP 429 errors; the remaining schema descriptions were translated directly with AI assistance, **not** through a replacement API.
-- All 24 English snippets now have descriptive English labels and English placeholder defaults; existing Portuguese completion aliases remain available for compatibility.
-- Manual English/Portuguese testing in the Extension Development Host is still pending.
+## Before marking the PR ready for review
 
-## Before PR
-- [x] Complete English schema descriptions and snippet names, descriptions, and placeholders.
-- [ ] Test both English and Portuguese in the Extension Development Host.
-- [ ] Verify schema validation, hover descriptions, and completion/snippet behavior.
-- [x] Run TypeScript, lint, formatting, tests, and VSIX packaging.
-- [x] Open upstream draft PR #5 for early feedback.
-- [ ] Review final diff and packaging contents before marking the PR ready for review.
+- [ ] Confirm the new GitHub Actions workflow passes on the remote PR branch after pushing.
+- [ ] Review the final diff and packaged VSIX contents.
+- [ ] Resolve any upstream maintainer feedback.
 
-## Future
-- Add an untranslated-string report for translation completeness.
-- Consider extension-host integration tests for YAML schema registration.
-- Keep this document updated with subsequent development decisions.
+## Community-maintained follow-up (not PR blockers)
+
+- Widget-by-widget real-world validation and translation corrections as contributors encounter issues.
+- Additional languages contributed with `npm run locale:add`.
+- Optional VS Code extension-host integration tests beyond the completed manual English/Portuguese smoke tests.
+- Optional untranslated-string reporting as more locales are contributed.
+
+## Translation history
+
+An early script using an unofficial Google Translate endpoint received HTTP 429 errors. No replacement translation API was implemented. English schema descriptions were translated directly with AI assistance, and the extension was manually smoke-tested in both supported languages. Future translations are reviewed and maintained by contributors.
